@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <meta name="title" content="Gintama blog- My anime world">
+    <meta name="description" content="A blog written on various anime related topics. Gintama, AOT, Black Clover,Death Note etc discussed in details.">
+    <meta name="keywords" content="Gintama, favourite anime, ranking anime characters, anime blog, anime for nature lovers">
+    <meta name="author" content="dORCA">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/website.html">
+    <meta property="og:title" content="Gintama blog- My anime world">
+    <meta property="og:description" content="A blog featuring  anime rankings, recommendations, characters and sightseeing places.">
+    <meta property="og:image" content="https://yourwebsite.com/Gheader.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/website.html">
+    <meta property="twitter:title" content="Gintama blog- My anime world">
+    <meta property="twitter:description" content="A blog featuring  anime rankings, recommendations, characters and sightseeing places.">
+    <meta property="twitter:image" content="https://yourwebsite.com/Gheader.png">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/website.html">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Mobile Specific -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#000000">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+    
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.37;
+        }
+        
+        .title-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-shadow: 2px 2px 4px black;
+        }
+        
+        .title-main {
+            padding-left: 100px;
+            font-size: 50pt; 
+        }
+        
+        .title-sub {
+            text-align: center;
+            font-size: 45pt; 
+            margin-top: 30px;
+        }
+        
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .blog-container h1 {
+            text-align: center;
+            color: white;
+            font-size: 36px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid orange;
+            padding-bottom: 10px;
+            display: inline-block;
+            width: auto;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .blog-post {
+            background-color: #1a1a1a;
+            border: 2px solid green;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .blog-post h2 {
+            color: whitesmoke;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .post-date {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: green;
+            font-size: 20px;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            color: orange;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            top: 10vh;
+            margin: 0 auto;
+            padding: 30px;
+            border: 2px solid green;
+            border-radius: 8px;
+            width: 85%;
+            max-width: 1000px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        .close:hover {
+            color: green;
+        }
+
+        .modal h2 {
+            color: white;
+            margin-top: 0;
+            padding-right: 50px;
+            font-size: 28px;
+        }
+
+        .modal-body {
+            color: white;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 5px;
+            display: block;
+        }
+
+        .modal-body p {
+            margin-bottom: 20px;
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            .header {
+                height: 175px;
+            }
+            
+            .title-main {
+                padding-left: 20px;
+                font-size: 28pt;
+                text-align: center;
+                padding-right: 20px;
+            }
+            
+            .title-sub {
+                font-size: 22pt;
+                margin-top: 15px;
+                padding: 0 20px;
+            }
+                
+            .blog-container {
+                padding: 20px 10px;
+            }
+            
+            .blog-container h1 {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+            /*the green framed container with the i wanna read it button in*/
+            .blog-post {
+                padding: 15px 15px 0 15px;
+                margin-bottom: 25;
+            }
+
+            .blog-post h2 {
+                font-size: 18px;
+                line-height: 1.3;
+            }
+        
+            .modal {
+                align-items: flex-start;
+                top: 5vh;
+            }
+            .modal-content {
+                width: 82% !important;
+                max-height: 70vh;
+                border-radius: 5px;
+                margin: 5vh auto 5px auto !important;
+            }
+        
+            .modal h2 {
+                font-size: 20px;
+                padding-right: 35px;
+                line-height: 1.2;
+                margin-bottom: 15px;
+            }
+            
+            .close {
+                font-size: 22px;
+                position:absolute;
+                right: 5px;
+                top: 5px;
+                align-items: flex-start;
+                justify-content: right;
+            }
+            .modal-body {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+        }
+        /* Extra small mobile devices */
+        @media screen and (max-width: 480px) {
+            .title-main {
+                font-size: 24pt;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .title-sub {
+                font-size: 18pt;
+                padding: 0 15px;
+            }    
+            .blog-container h1 {
+                font-size: 24px;
+            }
+            .blog-post {
+                padding: 15px 15px 0 15px;
+                margin-bottom: 25;
+            }
+            
+            .blog-post h2 {
+                font-size: 16px;
+            }
+            .modal {
+            align-items: flex-start;
+            padding-top: 10vh;
+            }   
+            .modal-content {
+                width: 85% !important;
+                padding: 12px;
+                max-height: 65vh;
+            }
+            .modal h2 {
+                font-size: 18px;
+                padding-right: 30px;
+                margin-bottom: 12px;
+            } 
+            .close {
+                font-size: 22px;
+                align-items: flex-start;
+                justify-content: right;
+                right: 5px;
+                top: 5px;
+            }
+            .modal-body {
+                font-size: 13px;
+                line-height: 1.4;
+            }
+        }
+
+        /* Touch-friendly improvements for mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .read-more {
+                padding: 4px;
+                display: inline-block;
+                margin: 5px 0;
+            }
+    
+            .close {
+                padding: 10px;
+                min-width: 44px;
+                min-height: 44px;
+                display:flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img class="header-image" src="Gheader.png" alt="Gintama header image">
+        <div class="title-container">
+            <div class="title-main">My anime world</div>
+            <div class="title-sub">~ revolves around Gintama ~</div>
+        </div>
+    </div>
+    <div class="blog-container">
+        <h1>Blog posts</h1>
+        <article class="blog-post">
+            <h2>1. Gintama tour - a real crazy fan's adventure in Japan</h2>
+            <p class="post-date">Posted on [date]</p>
+            <p><span class="read-more" onclick="openModal('modal1')">I wanna read it!</span></p>
+        </article>
+
+        <article class="blog-post">
+            <h2>2. My favourite Gintama characters: Zura and Takasugi </h2>
+            <p class="post-date">Posted on [date]</p>
+            <p><span class="read-more" onclick="openModal('modal2')">I wanna read it!</span></p>
+        </article>
+
+        <article class="blog-post">
+            <h2>3. My top 3 anime characters: Hisoka, Beelbo and Yami </h2>
+            <p class="post-date">Posted on [date]</p>
+            <p><span class="read-more" onclick="openModal('modal3')">I wanna read it!</span></p>
+        </article>
+    </div>
+        
+    <!-- Modal popup -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Gintama tour - a real crazy fan's adventure in Japan</h2>
+            <div class="modal-body">
+                <p>Coming soon! From the Gintama exhibition through Sakata city down to Katsura river</p>
+               <!-- <p>Your blog content goes here. This popup is now much larger and more comfortable to read with better spacing and larger text.</p>
+                
+                <img src="your-image-path.jpg" alt="Tour photo">
+                
+                <p>Add more paragraphs here. The modal will automatically scroll if content is too long.</p>
+                
+                <p>Images will display nicely with proper spacing and sizing.</p> -->
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>My favourite Gintama characters: Zura and Takasugi</h2>
+            <div class="modal-body">
+                <p>Coming soon! What does it mean to be a best friend?</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>My top 3 anime characters: Hisoka, Beelbo and Yami</h2>
+            <div class="modal-body">
+                <p>Coming soon! Badasses who catch your heart</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

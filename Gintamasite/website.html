@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Anime World</title>
+    <meta name="title" content="My Anime World - Revolves Around Gintama">
+    <meta name="description" content="Explore a personal anime world that revolves around Gintama. Discover anime rankings, recommendations, and blog content from a dedicated Gintama fan.">
+    <meta name="keywords" content="Gintama, anime world, anime recommendations, Sorachi Hideaki, Tomokazu Sugita, Takehito Koyasu, anime blog">
+    <meta name="author" content="dORCA">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/website.html">
+    <meta property="og:title" content="My Anime World - Revolves Around Gintama">
+    <meta property="og:description" content="A personal anime website featuring rankings, recommendations, and blog content from a dedicated Gintama fan.">
+    <meta property="og:image" content="https://yourwebsite.com/Gheader.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/website.html">
+    <meta property="twitter:title" content="My Anime World - Revolving Around Gintama">
+    <meta property="twitter:description" content="A personal anime website featuring rankings, recommendations, and blog content from a dedicated Gintama fan.">
+    <meta property="twitter:image" content="https://yourwebsite.com/Gheader.png">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/website.html">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Mobile Specific -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#000000">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Background butterfly styles */
+        .butterfly-bg {
+            position: absolute;
+            animation: float 8s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .butterfly-bg:nth-child(odd) {
+            animation-delay: 1s;
+        }
+        
+        .butterfly-bg:nth-child(even) {
+            animation-delay: 0.5s;
+        }
+        
+        .butterfly-bg:nth-child(3n) {
+            animation-delay: 1.5s;
+        }
+        
+        .butterfly-bg:nth-child(4n) {
+            animation-delay: 2s;
+        }
+        
+        .butterfly-bg:nth-child(5n) {
+            animation-delay: 2.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(0) rotate(0deg);
+            }
+            75% {
+                transform: translateY(15px) rotate(-5deg);
+            }
+        }
+        
+        .static-butterfly {
+            animation: none !important;
+        }
+        
+        /* Butterfly sizes */
+        .butterfly-bg.small {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .butterfly-bg.medium {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .butterfly-bg.large {
+            width: 120px;
+            height: 120px;
+        }
+
+        .butterfly-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+    
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.37;
+        }
+        
+        .title-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-shadow: 2px 2px 4px black;
+        }
+        
+        .title-main {
+            padding-left: 160px;
+            font-size: 50pt; 
+        }
+        
+        .title-sub {
+            text-align: center;
+            font-size: 45pt; 
+            margin-top: 30px;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 150px;
+            padding: 80px 0;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .nav-button {
+            background-color: black;
+            color: white;
+            border: 2px solid green;
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 22pt;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .nav-button::first-letter {
+            text-transform: uppercase;
+        }
+
+        .nav-button:hover {
+            background-color: green;
+            color: black;
+            cursor: pointer;
+        }
+
+        .content {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 2px 4px 10px orange;
+            font-size: 20pt;
+            text-align: justify;
+            line-height: 1.5;
+        }
+        
+        .bold-gintama {
+            font-weight: bold;
+        }
+    
+        .warning {
+            color: red;
+            font-weight: bold;
+            font-size: 20pt;
+        }
+        
+        .disclosure {
+            color: blue;
+            font-weight: bold;
+            font-size: 20pt;
+        }
+        
+        .special-thanks {
+            color: green;
+            font-weight: bold;
+            font-size: 20pt;
+        }
+        
+        .green-text {
+            color: green;
+        }
+        
+        hr {
+            border: 2px solid white;
+            margin: 20px 0;
+        }
+
+        .custom-details {
+            background: transparent;
+            border: none;
+            width: 100%;
+            margin: 0;
+            margin-bottom: 30px;
+            padding: 0;
+        }
+  
+        .custom-summary {
+            cursor: pointer;
+            outline: none;
+            border: none;
+            border-radius: 0;
+            margin-bottom: 18px;
+            padding-bottom: 30px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 5px;
+            padding-right: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            position: relative;
+            color: white;
+            transition: all 0.3s ease;
+        }
+  
+        .custom-summary:hover {
+            background-color: black;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px orange;
+        }
+        
+        .custom-summary::after {
+            content: none;
+        }
+
+        .see-below-text {
+            color: #ff8c00;
+            font-size: 20px;
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+        }
+    
+        .custom-details[open] .custom-summary::after {
+            content: '';
+        }
+  
+        .custom-details-content {
+            padding-top: 10px;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            padding: 10px;
+        }
+        
+        .logo-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            padding: 20px 0;
+            margin-top: 80px;
+            border-top: 1px solid #444;
+        }
+        
+        @media (max-width: 768px) {
+        .header{
+            height:auto;
+            min-height:150px;}
+        .header-image{ 
+            height:100%;
+            width:100%;
+            object-fit:cover;}
+        .button-container {
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            padding: 30px 0;}
+  
+        .nav-button {
+            width: 80%;
+            font-size: 18pt;}
+  
+        /* Display only small floating butterflies */
+        .butterfly-bg.large {
+            display: none;}
+        .butterfly-bg.medium {
+            display: none;}
+        .butterfly-bg.small {
+            display: none;}
+        
+        /* Keep static butterflies visible */
+        .static-butterfly {
+            display: block;}
+        
+            body {
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            overflow-x: hidden;}
+  
+        .title-main {
+            padding-left: 20px;
+            font-size: 22pt;}
+  
+        .title-sub {
+            font-size: 16pt;
+            margin-top: 16px;}
+  
+        .content {
+            font-size: 14pt;
+            padding: 10px;
+            width: 90%;
+            max-width: 90%;
+            box-sizing: border-box;
+            margin-top: 30px;}
+        
+        .see-below-text {
+            bottom: 5px;
+            right: 5px}
+        
+         /* Fix for images in mobile view */
+        img[src="hideaki.png"] {
+            width: 60px !important;
+            height: 60px !important;
+            display: block;
+            margin: 10px auto;}
+        
+        img[src="takasugin.png"] {
+            width: 100px;
+            height: 80px;
+            max-width: 50%;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            display:block;
+        }
+        
+        .logo-container {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    
+        .logo-row {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            margin: 10px 0 !important;
+        }
+    
+        .logo-row img {
+            height: 20px !important;
+            max-width: 60px !important;
+            margin: 5px !important;
+            object-fit: contain !important;
+        }
+    /* Special handling for the WB logo which is larger */
+        .logo-row img[src="WB logo.png"] {
+            height: 30px !important;
+        }
+    /* Keep the white background for Sunrise logo */
+        .logo-row div[style*="background-color: white"] {
+            padding: 3px !important;
+            margin: 5px !important;
+            width: 60px !important;
+            height: 20px !important;
+        }
+    
+        img {
+        max-width: 100%;
+        }
+}           
+    </style>
+</head>
+<body>
+    <a href="website preview.html" style="text-decoration: none; color: inherit;">
+        <div class="header">
+            <img class="header-image" src="Gheader.png" alt="Gintama header image">
+            <div class="title-container">
+                <div class="title-main">My anime world</div>
+                <div class="title-sub">~ revolves around Gintama ~</div>
+            </div>
+        </div>
+    </a>
+    
+    <!-- Buttons leading to new tab pages and static butterflies -->
+    <div class="button-container">
+        <div style="position: relative;">
+            <a href="animelist table.html" target="_blank" class="nav-button" style="text-decoration: none;">Anime list</a>
+            <div class="butterfly-bg medium static-butterfly" style="position: absolute; top: 35px; right: -45px; transform: translateY(-50%);">
+                <img src="butterflyright.png" alt="Background butterfly" />
+            </div>
+        </div>
+        
+        <div style="position: relative;">
+            <a href="metalsongs.html" target="_blank" class="nav-button" style="text-decoration: none;">Metal anime songs</a>
+            <div class="butterfly-bg medium static-butterfly" style="position: absolute; top: 35px; right: -45px; transform: translateY(-50%);">
+                <img src="butterflyright.png" alt="Background butterfly" />
+            </div>
+        </div>
+        
+        <div style="position: relative;">
+            <a href="blog.html" target="_blank" class="nav-button" style="text-decoration: none;">Blog</a>
+            <div class="butterfly-bg medium static-butterfly" style="position: absolute; top: 35px; right: -45px; transform: translateY(-50%);">
+                <img src="butterflyright.png" alt="Background butterfly" />
+            </div>
+        </div>
+    </div>
+    
+    <!-- Background Butterflies - 20+ total -->
+    <!-- Right-facing butterflies -->
+    <div class="butterfly-bg small" style="top: 15%; left: 12%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg large" style="top: 24%; left: 8%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 23%; right: 8%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg large" style="top: 30%; right: 6%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 40%; left: 9%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 43%; right: 11%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 51%; right: 8%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg large" style="top: 55%; left: 9%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 63%; left: 6%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 71%; right: 8%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 80%; right: 13%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 89%; right: 8%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    
+    <!-- Left-facing butterflies -->
+    <div class="butterfly-bg small" style="top: 21%; right: 14%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 36%; left: 12%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 45%; left: 14%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 48%; right: 13%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 50%; left: 7%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 56%; right: 12%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg large" style="top: 60%; right: 6%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 63%; left: 14%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg large" style="top:69%; left: 5%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 70%; right: 14%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 76%; left: 13%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg large" style="top: 80%; right: 6%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>    
+    <div class="butterfly-bg medium" style="top: 83%; left: 8%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg large" style="top: 87%; left: 3%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    
+    <div class="content">
+        <p>
+            This site exists for the reason to create a very random blog and a <a href="animelist table.html" target="_blank" style="color: white; text-decoration: underline;">list</a> of ~ 150 anime that I have watched. The site mainly features <span class="bold-gintama">Gintama</span> and every other anime is assessed in the light of or comparison to <span class="bold-gintama">Gintama</span>, my favourite anime of all time. This site, the attached blog and <a href="animelist.html" style="color: white; text-decoration: underline;">list</a> are a pedestal raised for <span class="bold-gintama">Gintama</span>.
+            Other anime are also discussed and recommended here. The <a href="animelist table.html" target="_blank" style="color: white; text-decoration: underline;">list</a> categorises, scores and sorts anime based on my personal preferences and priorities so it might be very dividing and controversial for many. Everything is compared to my personal N.o. 1: <span class="bold-gintama">GINTAMA</span>.
+        </p>
+        
+        <hr>
+        
+        <p>
+            <span class="warning">Warning:</span> Anime is a form of art and one of my favourite forms at that. Every anime is an artwork and as such they will resonate differently with everyone. Tastes differ and are subjective. My opinion does not reflect the mainstream nor does it want to blend in the mass of popular anime. My standards for anime are based on the quality of drawings, sceneries, animation, the depth and / or goal of the story, the depth of the characters and that the anime (and obviously the story) is finished / completed not hanging in the air. Fun fact: <span class="bold-gintama">Gintama</span> only barely just made it :D. An unfinished anime, even if it is one of the bests, will never score on my <a href="animelist table.html" target="_blank" style="color: white; text-decoration: underline;">list</a> nor will anything that is clearly out only for the money. These might explain why the Big Three are not here.
+            I do not read manga, that is a different type of art to which I cannot connect not even for my favourite anime. Regardless,<span class="green-text"> SORACHI HIDEAKI</span> is my personal hero and I appreciate all the hard work, years and effort he put into making <span class="bold-gintama">Gintama</span>.
+            When browsing my <a href="animelist table.html" target="_blank" style="color: white; text-decoration: underline;">list</a> which ranks very differently from the most popular ones, please beware that it is based on my and only my opinion. My <a href="animelist table.html" target="_blank" style="color: white; text-decoration: underline;">list</a> and my anime world that revolves around <span class="bold-gintama">Gintama</span> might catch the eyes of those who search for the same in this world as I do: humour, sarcasm, deep characters and a twist that either rips your heart apart or sets it back to peace. Well, <span class="bold-gintama">Gintama</span> does both and more for me.
+        </p>
+        
+        <div style="color: white; font-family: sans-serif;">
+            <details class="custom-details">
+                <summary class="custom-summary">
+                    <p>
+                        <span class="disclosure">Disclosure:</span> I do not own or have rights over the visual materials related to the anime listed here. Source and credits to the original authors are listed in the footer.
+                        <span class="see-below-text">See below ▼</span>
+                    </p>
+                </summary>
+                <div class="custom-details-content">
+                    <p>
+                        <span class="bold-gintama">Gintama</span> is the product of mangaka Sorachi Hideaki, the manga was serialized in Weekly Shounen Jump (2003-2018) and later in Shonen Jump Giga and on the <span class="bold-gintama">Gintama</span> Official App all published by Shueisha. The TV show was animated by Sunrise and initially presented by TV Tokyo and Sunrise Dentsu under editors Shinji Takamatsu and Yoichi Fujita between 2006-2016 then continued by Bandai Namco Pictures from 2015 to 2018 under editor Chizuru Miyawaki.
+                    </p>
+                   
+                    <p>
+                        The 3 movies that drew my interest: The new Benizakura Arc, The Final: Be forever Yorozuya and obviously the Very Final which is also the closure of the anime series. They are all the work of <span class="bold-gintama">Gintama</span> the Movie Production Committee consisting of Shueisha, Aniplex, Bandai Namco Pictures, TV Tokyo, Warner Bros. Japan, Sunrise, Dentsu, under the editors mentioned before.
+                    </p>
+                </div>
+            </details>
+        </div>
+        
+        <hr>
+        
+        <p>
+            <span class="special-thanks">Special thanks:</span> Obviously and firstly to <span class="green-text"> SORACHI HIDEAKI</span>. 
+            <img src="hideaki.png" alt="Hideaki Sorachi mangaka gorilla" style="display: inline-block; vertical-align: middle; width: 85px; height: 85px; margin-left: 10px; object-fit: cover; border-radius: 50%; box-shadow: inset 0 -4px 10px 5px rgba(100,100,100,0.6);">
+            <p>
+        </p>
+        <p>
+            To all of the above listed studios, their employees and collaborators, the voice actors, producers, directors, character designers, animators, song-and playwriters, drawers, planners, secretaries, brainstormers, Audio Highs and the different bands for the music, encouragers, to EVERYONE who made it possible to come true, I am eternally thankful for creating and bringing The Masterpiece into my life. 
+        </p>
+        
+        <p>
+            <span class="green-text">DOES</span> also holds a special place in my heart for creating many of the ops, theme and end songs that I enjoyed the most. And last but not least the biggest thanks to two very talented people:
+        </p>
+
+        <p>
+            The voice actor whose acting skills know no boundaries covering a huge range of noises, voices, high and low pitches, associated to silver hair forever in my mind: <span class="green-text">TOMOKAZU SUGITA</span>; and
+        </p>
+            <img src="takasugin.png" alt="Gintoki and Takasugi" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-left:300px;">
+        <p>
+            The voice actor who reaches the depth of my heart stirring it with his deep tone and silky hoarseness: <span class="green-text">TAKEHITO KOYASU</span>. He became my favourite voice to listen to in the world.
+        </p>
+    </div>
+    
+    
+    <footer>
+        <!-- Logo container with reliable online sources -->
+        <div class="logo-container" style="width: 70%; margin-left: 15%; margin-right: 15%;">
+            <!-- First row -->
+            <div class="logo-row" style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
+                <!-- Shueisha logo -->
+                <a href="https://www.shueisha.co.jp/" target="_blank" rel="noopener noreferrer">
+                    <img src="Shueisha logo.png" alt="Shueisha logo" style="height: 30px; max-width: 100px; margin: 0 25px; filter: brightness(0) invert(1);">
+                </a>
+            
+                <!-- Weekly Shonen Jump logo -->
+                <a href="https://www.shonenjump.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Weekly_Shonen_Jump_Logo.png/320px-Weekly_Shonen_Jump_Logo.png" alt="Weekly Shonen Jump logo" style="height: 30px; max-width: 100px; margin: 0 25px;">
+                </a>
+            
+                <!-- TV Tokyo logo -->
+                <a href="https://www.tv-tokyo.co.jp/" target="_blank" rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/TV_Tokyo_logo_20110629.svg/320px-TV_Tokyo_logo_20110629.svg.png" alt="TV Tokyo logo" style="height: 40px; max-width: 100px; margin: 0 25px;">
+                </a>
+                <!-- Bandai Namco logo -->
+                <a href="https://www.bandainamco.co.jp/" target="_blank" rel="noopener noreferrer">
+                    <img src="BN logo.png" alt="Bandai Namco logo" style="height: 30px; max-width: 110px; margin: 0 25px;">
+                </a>
+                
+                <!-- Aniplex logo -->
+                <a href="https://www.aniplex.co.jp/" target="_blank" rel="noopener noreferrer">
+                    <img src="aniplex logo.png" alt="Aniplex logo" style="height: 40px; max-width: 110px; margin: 0 25px;">
+                </a>
+
+                <!-- Sunrise logo with white background -->
+                <a href="https://www.sunrise-inc.co.jp/" target="_blank" rel="noopener noreferrer">
+                    <div style="background-color: white; padding: 5px; margin: 0 35px; width: 90px; height: 25px; display: flex; align-items: center; justify-content: center;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Sunrise-Logo.svg/320px-Sunrise-Logo.svg.png" alt="Sunrise logo" style="height: 30px; max-width: 100px;">
+                    </a>
+                    </div>
+            </div>
+            
+            <div class="logo-row" style="display: flex; justify-content: flex-start; margin-left: 30%; margin-bottom: 20px;">
+                
+                <!-- dentsu logo -->
+                <a href="https://www.dentsu.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="dentsu logo.png" alt="dentsu logo" style="height: 25px; max-width: 100px; margin: 0 150px;">
+                </a>
+                <!-- WB logo -->
+                <a href="https://www.warnerbros.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="WB logo.png" alt="Warner Bros logo" style="height: 60px; max-width: 150px; margin: 0 25px;">
+                </a>
+            </div>
+        </div>
+        
+        <div style="width: 70%; margin-left: 15%; margin-right: 15%;">
+            <p>All Gintama visual rights belong to © Sorachi Hideaki / Shueisha. Header image and logos are properties of their respective owners. The logos were accessed from Wikimedia Commons and all other pictures belong to <a href="https://www.zerochan.net/Official+Art,Gintama" target="_blank" rel="noopener noreferrer" style="color: #ccc; text-decoration: underline;">https://www.zerochan.net/Official+Art,Gintama</a> - Official Gintama Art site.</p>
+            <p>This is a fan website created for non-commercial purposes.</p>
+        </div>
+    </footer>
+</body>
+</html>

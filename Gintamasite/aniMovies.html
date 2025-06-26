@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="My Anime Movies List - Collection of Best Anime Films">
+    <meta name="description" content="A personal collection of ranked anime movies featuring Studio Ghibli films, Makoto Shinkai works, and top-rated anime cinema. Discover highly-rated anime movies with detailed reviews.">
+    <meta name="keywords" content="anime movies, Studio Ghibli, Makoto Shinkai, anime films, best anime movies, anime movie reviews, Japanese animation, anime cinema, Gintama fan recommendations">
+    <meta name="author" content="dORCA">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/aniMovies.html">
+    <meta property="og:title" content="My Anime Movies Collection - From Ghibli to Shinkai">
+    <meta property="og:description" content="Explore a carefully selected collection of anime movies. Features Studio Ghibli classics, Makoto Shinkai masterpieces, and hidden gems of anime cinema.">
+    <meta property="og:image" content="https://yourwebsite.com/Gheader.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/aniMovies.html">
+    <meta property="twitter:title" content="My Anime Movies Collection - From Ghibli to Shinkai">
+    <meta property="twitter:description" content="Explore a carefully selected collection of anime movies. Features Studio Ghibli classics, Makoto Shinkai masterpieces, and hidden gems of anime cinema.">
+    <meta property="twitter:image" content="https://yourwebsite.com/Gheader.png">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/aniMovies.html">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Mobile Specific -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#000000">
+    <title>My Anime Movies List</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Montserrat, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        
+        .header {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+    
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.37;
+            background: linear-gradient(45deg, #1a1a1a, #333);
+        }
+        
+        .title-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-shadow: 2px 2px 4px black;
+        }
+        
+        .title-main {
+            padding-left: 160px;
+            font-size: 50pt; 
+        }
+        
+        .title-sub {
+            text-align: center;
+            font-size: 45pt; 
+            margin-top: 30px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: fit-content;
+            margin: 90px auto 70px;
+            background-color: #1a1a1a;
+            padding: 5px 0 0 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px green;
+        }
+        
+        .table-container {
+            display: inline-block;
+            width: fit-content;
+            margin: 1px auto;
+            background-color: #1a1a1a;
+            padding: 0;
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 60px 0 15px;
+            color: #ffffff;
+            font-size: 36pt;
+            position: relative;
+            z-index: 5;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid orange;
+            width: fit-content;
+            display: inline-block;
+            margin-left: 50%;
+            margin-bottom: 0;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .butterfly-bg {
+            position: absolute;
+            animation: float 8s ease-in-out infinite;
+            z-index: 2;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .butterfly-bg:nth-child(odd) { animation-delay: 1s; }
+        .butterfly-bg:nth-child(even) { animation-delay: 0.5s; }
+        .butterfly-bg:nth-child(3n) { animation-delay: 1.5s; }
+        .butterfly-bg:nth-child(4n) { animation-delay: 2s; }
+        .butterfly-bg:nth-child(5n) { animation-delay: 2.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(15px) rotate(-5deg); }
+        }
+
+        .butterfly-bg.small { width: 30px; height: 30px; }
+        .butterfly-bg.medium { width: 70px; height: 70px; }
+        .butterfly-bg.big { width: 140px; height: 140px; }
+
+        .butterfly-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        table { 
+            border-collapse: collapse; 
+            margin: 0;
+            border-spacing: 0;
+            width: 100%;
+            font-size: 15px;
+            background: transparent;
+            table-layout: auto;
+            border: 2px solid green;
+            font-weight: bold;
+        }
+        
+        td, th { 
+            border: 1px solid green;
+            padding: 12px;
+            text-align: center;
+            vertical-align: middle;
+            color: white;
+        }
+
+        th { 
+            white-space: nowrap;
+            font-size: 18px;
+            height: 50px;
+            position: sticky;
+            top: 0;
+            background-color: #1a1a1a;
+        } 
+        
+        .rank { 
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 32px;
+            height: 32px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            font-weight: 600;
+            border: 1.5px solid lightseagreen;
+        }
+
+        td:nth-child(1) { text-align: left; }
+        td:nth-child(4) { text-align: left; }
+
+        .wholesome { color: lightseagreen; font-weight: bold; }
+        .awesome { color: lightseagreen; font-weight: bold; }
+        .i-see-my-reflection-in-it { color: rgb(12, 73, 82); font-weight: bolder; }
+        .very-good { color: lightgreen; font-weight: bold; }
+        .good { color: rgb(130, 201, 16); font-weight: bold; }
+        .ok { color: orange; font-weight: bold; }
+        .nope { color: red; font-weight: bold; }
+        .never-again { color: darkred; font-weight: bold; }
+
+        .cards-container {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                height: 160px;
+            }
+            
+            h1 {
+                font-size: 20pt;
+                width: fit-content;
+                margin: 30px auto 20px;
+                transform: none; 
+                display: block;
+                white-space: normal;
+                line-height: 1.2;
+            }
+            
+            body {
+                font-size: 14px;
+                width: 100%;
+                overflow-x: hidden;
+            }
+            
+            .butterfly-bg {
+                display: none;
+            }
+            
+            .title-main {
+                text-align: center;
+                padding-left: 0;
+                font-size: 24pt;
+            }
+            
+            .title-sub {
+                font-size: 18pt;
+                margin-top: 10px;
+            }
+            
+            .table-container,
+            .container {
+                display: none;
+            }
+           
+            .cards-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                width: 100%;
+                padding: 0 15px 30px;
+                box-sizing: border-box;
+                position: relative;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 400px;
+                background-color: #1a1a1a;
+                border: 2px solid green;
+                border-radius: 12px;
+                padding: 20px;
+                box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
+                position: relative;
+                box-sizing: border-box;
+            }
+            
+            .card-row {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                align-items: flex-start;
+                border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+                padding-bottom: 8px;
+            }
+            
+            .card-row:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+            
+            .card-label {
+                color: aqua;
+                width: 100px;
+                font-weight: bold;
+                font-size: 14px;
+                flex-shrink: 0;
+            }
+            
+            .card-value {
+                flex: 1;
+                text-align: right;
+                font-weight: bold;
+                font-size: 14px;
+                word-wrap: break-word;
+                margin-left: 10px;
+            }
+            
+            .card-value.wholesome { color: lightseagreen; }
+            .card-value.awesome { color: lightseagreen; }
+            .card-value.very-good { color: lightgreen; }
+            .card-value.good { color: rgb(130, 201, 16); }
+            .card-value.ok { color: orange; }
+            .card-value.nope { color: red; }
+            .card-value.never-again { color: darkred; }
+        }
+
+        @media (min-width: 769px) {
+            .cards-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="animelist table.html" style="text-decoration: none; color: inherit;">
+        <div class="header">
+            <img class="header-image" src="Gheader.png" alt="Gintama header image">
+            <div class="title-container">
+                <div class="title-main">My anime world</div>
+                <div class="title-sub">~ revolves around Gintama ~</div>
+            </div>
+        </div>
+    </a>
+    
+    <h1>Anime movies list</h1>
+    
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Evaluation</th>
+                        <th>Romance</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Stranger by the shore</td><td class="wholesome">WHOLESOME</td><td>yaoi</td><td>Tranquil</td></tr>
+                    <tr><td>Wolfchildren</td><td class="awesome">AWESOME</td><td></td><td>Mamoru Hosoda</td></tr>
+                    <tr><td>Grave of the fireflies</td><td class="awesome">AWESOME</td><td></td><td>Ghibli's best</td></tr>
+                    <tr><td>5 millimeters per second</td><td class="awesome">AWESOME</td><td>x</td><td>Shinkai, realistic ending</td></tr>
+                    <tr><td>Josee the Tiger and the Fish</td><td class="very-good">very good</td><td>x</td><td>I see my reflection in it</td></tr>
+                    <tr><td>Howl's moving castle</td><td class="very-good">very good</td><td>x</td><td>Ghibli, fairy tale</td></tr>
+                    <tr><td>The wind rises</td><td class="very-good">very good</td><td>x</td><td>Ghibli</td></tr>
+                    <tr><td>When Marney was there</td><td class="very-good">very good</td><td></td><td>Ghibli</td></tr>
+                    <tr><td>Suzume</td><td class="very-good">very good</td><td>x</td><td>Shinkai, strange concept, fun</td></tr>
+                    <tr><td>Hikari, be my light</td><td class="very-good">very good</td><td>yaoish</td><td>Given like…</td></tr>
+                    <tr><td>Bubbles</td><td class="very-good">very good</td><td></td><td>beautiful visuals</td></tr>
+                    <tr><td>Your name</td><td class="very-good">very good</td><td>x</td><td>Shinkai's best</td></tr>
+                    <tr><td>Laputa</td><td class="very-good">very good</td><td></td><td>Ghibli, a must see</td></tr>
+                    <tr><td>Ride your wave</td><td class="very-good">very good</td><td>x</td><td></td></tr>
+                    <tr><td>I want to eat your pancreas</td><td class="very-good">very good</td><td>x</td><td>Yoru Sumino, I love the ending</td></tr>
+                    <tr><td>Princess Mononoke</td><td class="good">good</td><td>x</td><td>Ghibli</td></tr>
+                    <tr><td>The anthem of the heart</td><td class="good">good</td><td>x</td><td></td></tr>
+                    <tr><td>Horatubi no morie</td><td class="good">good</td><td>x</td><td></td></tr>
+                    <tr><td>Weathering with you</td><td class="good">good</td><td>x</td><td>Shinkai</td></tr>
+                    <tr><td>A whisker away</td><td class="ok">ok</td><td>x</td><td></td></tr>
+                    <tr><td>Only yesterday</td><td class="ok">ok</td><td>x</td><td></td></tr>
+                    <tr><td>The garden of words</td><td class="nope">NOPE</td><td></td><td>Shinkai</td></tr>
+                    <tr><td>Neon Genesis Evangelion</td><td class="nope">NOPE</td><td></td><td></td></tr>
+                    <tr><td>The girl who leapt through time</td><td class="nope">NOPE</td><td></td><td></td></tr>
+                    <tr><td>Ghost in the shell</td><td class="never-again">NEVER AGAIN</td><td></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="cards-container">
+        <!-- Cards generated by JavaScript for mobile -->
+    </div>
+
+    <script>
+        const moviesData = [
+            { title: "Stranger by the shore", evaluation: "WHOLESOME", romance: "yaoi", comments: "Kanna Kii" },
+            { title: "Wolfchildren", evaluation: "AWESOME", romance: "", comments: "Mamoru Hosoda" },
+            { title: "Grave of the fireflies", evaluation: "AWESOME", romance: "", comments: "Ghibli" },
+            { title: "5 millimeters per second", evaluation: "AWESOME", romance: "x", comments: "Shinkai" },
+            { title: "Josee the Tiger and the Fish", evaluation: "very good", romance: "x", comments: "I see my reflection in it" },
+            { title: "Howl's moving castle", evaluation: "very good", romance: "x", comments: "Ghibli" },
+            { title: "The wind rises", evaluation: "very good", romance: "x", comments: "Ghibli" },
+            { title: "When Marney was there", evaluation: "very good", romance: "", comments: "Ghibli" },
+            { title: "Suzume", evaluation: "very good", romance: "x", comments: "Shinkai" },
+            { title: "Hikari, be my light", evaluation: "very good", romance: "yaoish", comments: "Given like…" },
+            { title: "Bubbles", evaluation: "very good", romance: "", comments: "Wit studio" },
+            { title: "Your name", evaluation: "very good", romance: "x", comments: "Shinkai" },
+            { title: "Laputa", evaluation: "very good", romance: "", comments: "Ghibli" },
+            { title: "Ride your wave", evaluation: "very good", romance: "x", comments: "" },
+            { title: "I want to eat  your pancreas", evaluation: "very good", romance: "x", comments: "Yoru Sumino" },
+            { title: "Princess Mononoke", evaluation: "good", romance: "x", comments: "Ghibli" },
+            { title: "The anthem of the heart", evaluation: "good", romance: "x", comments: "" },
+            { title: "Horatubi no morie", evaluation: "good", romance: "x", comments: "" },
+            { title: "Weathering with you", evaluation: "good", romance: "x", comments: "Shinkai" },
+            { title: "A whisker away", evaluation: "ok", romance: "x", comments: "" },
+            { title: "Only yesterday", evaluation: "ok", romance: "x", comments: "" },
+            { title: "The garden of words", evaluation: "NOPE", romance: "", comments: "Shinkai" },
+            { title: "Neon Genesis Evangelion", evaluation: "NOPE", romance: "", comments: "" },
+            { title: "The girl who leapt through time", evaluation: "NOPE", romance: "", comments: "" },
+            { title: "Ghost in the shell", evaluation: "NEVER AGAIN", romance: "", comments: "" }
+        ];
+
+        function getEvaluationClass(evaluation) {
+            const eval_lower = evaluation.toLowerCase();
+            if (eval_lower === 'wholesome') return 'wholesome';
+            if (eval_lower === 'awesome') return 'awesome';
+            if (eval_lower === 'very good') return 'very-good';
+            if (eval_lower === 'good') return 'good';
+            if (eval_lower === 'ok') return 'ok';
+            if (eval_lower === 'nope') return 'nope';
+            if (eval_lower === 'never again') return 'never-again';
+            return '';
+        }
+
+        function generateCards() {
+            // Only generate cards on mobile
+            if (window.innerWidth > 768) return;
+            
+            const cardsContainer = document.querySelector('.cards-container');
+            if (!cardsContainer) return;
+            
+            moviesData.forEach(movie => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                const evaluationClass = getEvaluationClass(movie.evaluation);
+                
+                card.innerHTML = `
+                    <div class="card-row">
+                        <div class="card-label">Title</div>
+                        <div class="card-value">${movie.title}</div>
+                    </div>
+                    <div class="card-row">
+                        <div class="card-label">Evaluation</div>
+                        <div class="card-value ${evaluationClass}">${movie.evaluation}</div>
+                    </div>
+                    <div class="card-row">
+                        <div class="card-label">Romance</div>
+                        <div class="card-value">${movie.romance}</div>
+                    </div>
+                    <div class="card-row">
+                        <div class="card-label">Comments</div>
+                        <div class="card-value">${movie.comments}</div>
+                    </div>
+                `;
+                
+                cardsContainer.appendChild(card);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', generateCards);
+        
+        window.addEventListener('resize', function() {
+            const cardsContainer = document.querySelector('.cards-container');
+            if (cardsContainer) {
+                cardsContainer.innerHTML = '';
+                generateCards();
+            }
+        });
+    </script>
+
+    <!-- Floating Butterflies -->
+    <div class="butterfly-bg medium" style="top: 30%; right: 18%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 36%; right: 16%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg big" style="top: 40%; right: 14%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 41%; left: 12%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 44%; left: 16%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 56%; right: 19%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg big" style="top: 62%; left: 14%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 73%; left: 19%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 77%; left: 18%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 81%; right: 19%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 85%; right: 19%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 96%; left: 18%;">
+        <img src="butterflyright.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg big" style="top: 30%; left: 13%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 47%; left: 19%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 50%; right:21%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 55%; left: 20%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg medium" style="top: 67%; right: 19%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 86%; right: 21%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg small" style="top: 90%; left: 17%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+    <div class="butterfly-bg big" style="top: 93%; right: 14%;">
+        <img src="butterflyleft.png" alt="Background butterfly" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My anime list</title>
+    <meta name="title" content="My Anime List - Featuring Gintama and Top Rated Anime Series">
+    <meta name="description" content="A personal collection of ranked anime series with detailed ratings, episode counts, and special features. Discover top anime recommendations from a Gintama fan.">
+    <meta name="keywords" content="anime list, Gintama, top anime, anime rankings, anime recommendations, best anime series, anime reviews">
+    <meta name="author" content="dORCA">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/animelist.html">
+    <meta property="og:title" content="My Anime World - Revolving Around Gintama">
+    <meta property="og:description" content="Explore a collection of the best anime series ranked by a passionate fan. Features detailed ratings and comments on over 100 anime titles.">
+    <meta property="og:image" content="https://yourwebsite.com/Gheader.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/animelist.html">
+    <meta property="twitter:title" content="My Anime World - Revolving Around Gintama">
+    <meta property="twitter:description" content="Explore a collection of the best anime series ranked by a passionate fan. Features detailed ratings and comments on over 100 anime titles.">
+    <meta property="twitter:image" content="https://yourwebsite.com/Gheader.png">
+    <!-- Canonical URL -->
+    <meta rel="canonical" href="https://yourwebsite.com/animelist.html">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Mobile Specific -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#000000">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Montserrat, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.37;
+        }
+        .title-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-shadow: 2px 2px 4px black;
+        }
+        .title-main {
+            padding-left: 160px;
+            font-size: 50pt; 
+        }
+        .title-sub {
+            text-align: center;
+            font-size: 45pt; 
+            margin-top: 30px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90%;
+            margin: 90px auto 70px;
+            background-color: #1a1a1a;
+            padding: 5px 0 0 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px green;
+            position: relative;
+        }
+        .table-container {
+            display: inline-block;
+            width: fit-content;
+            margin: 20px auto;
+            background-color: #1a1a1a;
+            padding: 0;
+            border-radius: 8px;
+        }
+        .anime-movies-link {
+            text-align: right;
+            position: absolute;
+            right: 20px;
+            top: 300px;
+            margin-top: -40px;
+            z-index: 10;            
+        }
+
+        h1 {
+            text-align: center;
+            margin: 40px 0 15px;
+            color: #ffffff;
+            font-size: 36pt;
+            position: relative;
+            z-index: 5;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid orange;
+            width: 30%;
+            display: inline-block;
+            margin-left: 50%;
+            margin-bottom: 0;
+            transform: translateX(-50%);
+        }
+        
+        table { 
+            border-collapse: collapse;
+            border-spacing: 0; 
+            margin: 0;
+            width: 100%;
+            font-size: 15px;
+            background: transparent;
+            table-layout: auto;
+            border: 2px solid green;
+            font-weight: bold;
+        }
+        
+        td, th { 
+            border: 1px solid green;
+            padding: 5px;
+            text-align: center;
+            vertical-align: middle;
+            color: white;
+        }
+
+        th { 
+            white-space: nowrap;
+            font-size: 18px;
+            height: 50px;
+            position: sticky;
+            top: 0;
+            background-color: #1a1a1a;
+            z-index: 1001;
+        } 
+    
+        .rank { 
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 32px;
+            height: 32px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            font-weight: 600;
+            border: 1.5px solid lightseagreen;
+        }
+
+        td:nth-of-type(1),
+        td:nth-of-type(7),
+        td:nth-of-type(9) { 
+            text-align: left !important; 
+        }
+        
+        td:nth-child(2) { text-align: left; }
+        td:nth-child(8) { text-align: left; }
+        td:nth-child(10) { text-align: left; }
+        
+        td:nth-child(10):has(> span.unfinished) { color: red; }
+        td:nth-child(4):has(> span.freaking-good) { color: darkgreen; }
+
+        .info-button {
+            position: absolute;
+            top: 455px;
+            left: 85px;
+            width: 25px;
+            height: 25px;
+            background-color: lightseagreen;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1.5px solid lightseagreen;
+            z-index: 1002;
+        }
+
+        .info-tooltip {
+            position: absolute;
+            top: 300px;
+            left: 50px;
+            background-color: lightseagreen;
+            color: black;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            line-height: 1.4;
+            white-space: pre-line;
+            min-width: 300px;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1003;
+            display: none;
+        }
+
+        .info-tooltip::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            border: 8px solid transparent;
+            border-bottom-color: lightseagreen;
+        }
+    
+        @media (max-width: 768px) {
+            .header {
+                height: auto;
+                min-height: 150px;
+            }
+            .header-image { 
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            h1 {
+                font-size: 20pt;
+                width: 60%;
+                margin: 40px auto 25px;
+                transform: translate(0); 
+                border-bottom: 2px orange;
+                display: block;
+            }
+            .mobile-movies-button {
+                text-align: right;
+                padding: 0 20px;
+                margin-bottom: 3px;
+                width: 90%; 
+            }
+            body {
+                font-size: 14px;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                overflow-x: hidden;
+            }
+            .title-main {
+                text-align: center;
+                padding-left: 0;
+                font-size: 24pt;
+            }
+            .title-sub {
+                font-size: 20pt;
+                margin-top: 15px;
+            }
+
+            .table-container,
+            .container,
+            .anime-movies-link,
+            .info-button {
+                display: none;
+            }
+            
+            .mobile-info-button {
+                display: flex;
+                position: absolute;
+                top: 250px;
+                left: 30px;
+                width: 25px;
+                height: 25px;
+                background-color: lightseagreen;
+                color: white;
+                border-radius: 50%;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                font-size: 14px;
+                cursor: pointer;
+                border: 1.5px solid lightseagreen;
+                z-index: 1002;
+            }
+            .mobile-info-tooltip {
+                position: fixed;
+                top: 55px;
+                left: 20px;
+                background-color: lightseagreen;
+                color: black;
+                padding: 12px;
+                border-radius: 8px;
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 1.4;
+                white-space: pre-line;
+                min-width: 280px;
+                max-width: 320px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                z-index: 1003;
+                display: none;
+            }
+            .mobile-info-tooltip::after {
+                content: '';
+                position: absolute;
+                top: -8px;
+                left: 20px;
+                border: 8px solid transparent;
+                border-bottom-color: lightseagreen;
+            }
+
+            .cards-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                margin-bottom: 70px;
+                position: relative;
+            }
+            .card {
+                width: 90%;
+                background-color: #1a1a1a;
+                border: 2px solid green;
+                border-radius: 8px;
+                padding: 10px;
+                box-shadow: 0 2px 5px rgba(0, 255, 0, 0.3);
+                position: relative;
+            }
+            .card-row {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px;
+                align-items: flex-start;
+                border-bottom: 1px solid lightgreen;
+                padding-bottom: 5px;
+            }
+            .card-label {
+                color: aqua;
+                width: 120px;
+                font-weight: bold;
+            }
+            .card-value {
+                flex: 1;
+                text-align: right;
+                font-weight: bold;
+            }
+            .best-ever {
+                color: lightseagreen;
+                font-weight: bold;
+            }
+            .top7 {
+                color: white;
+            }
+            .freaking-good {
+                color: darkgreen;
+            }
+            .unfinished {
+                color: red;
+            }
+            .nope {
+                color: red;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .cards-container,
+            .mobile-movies-button,
+            .mobile-info-button,
+            .mobile-info-tooltip {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="website.html" style="text-decoration: none; color: inherit;">
+        <div class="header">
+            <img class="header-image" src="Gheader.png" alt="Gintama header image">
+            <div class="title-container">
+                <div class="title-main">My anime world</div>
+                <div class="title-sub">~ revolves around Gintama ~</div>
+            </div>
+        </div>
+    </a>
+    
+    <h1>My Anime List</h1>
+    <div class="anime-movies-link" style="text-align: right; padding: 0 20px; margin: 70px 50px 70px;">
+        <a href="#" onclick="window.open('aniMovies.html','_blank');" style="color: white; text-decoration: none; font-size: 17px;">
+            Anime movies list <span style="margin-left: 5px; color: orange; font-weight: bold; font-size: 22px;">→</span>
+        </a>
+    </div>
+    <div class="mobile-movies-button">
+        <a href="#" onclick="window.open('aniMovies.html','_blank');" style="color: white; text-decoration: none; font-size: 14px;">
+            Anime movies list <span style="margin-left:5px; color: orange; font-weight: bold; font-size: 17px;">→</span>
+        </a>
+    </div>
+    <div class="info-button" onclick="toggleTooltip()">i</div>
+    <div class="info-tooltip" id="infoTooltip"> 1) Rank: Anime that don't fit a 10 scale because they are much better. Having the same rank means none of them outdoes the other.
+        2) Evaluation: Anime are scored from 0-10 (except the ranked ones) based on my opinion.
+        3) Romance, adult, yaoi: Marked x if anime fits the category
+        4) Intro/outro: Marked yes if I liked it
+        5) Relevant voiceover: If the anime has a major Gintama voice actor in it (mainly Sugita or Koyasu)
+        <span style="color: white ">If you are looking for a certain anime use Ctrl+F, if it's listed this will find it for you."</span>
+    </div>
+    <div class="mobile-info-button" onclick="toggleMobileTooltip()">i</div>
+    <div class="mobile-info-tooltip" id="mobileInfoTooltip"> 1) Rank: Anime that don't fit a 10 scale because they are much better. Having the same rank means none of them outdoes the other.
+        2) Evaluation: Anime are scored from 0-10 (except the ranked ones) based on my opinion.
+        3) Romance, adult, yaoi: Marked x if anime fits the category
+        4) Intro/outro: Marked yes if I liked it
+        5) Relevant voiceover: If the anime has a major Gintama voice actor in it (mainly Sugita or Koyasu)
+    </div>
+    <div class="container"> 
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Title</th>
+                <th>N.o. eps</th>
+                <th>Evaluation</th>
+                <th>Romance</th>
+                <th>For adults</th>
+                <th>Yaoi</th>
+                <th>Intro/outro</th>
+                <th>Relevant voiceover</th>
+                <th>Comments</th>
+            </tr>
+            <tr><td><div class="rank">1</div></td><td>Gintama</td><td>367 + final movie</td><td style="font-weight: bold; color: lightseagreen;">THE BEST EVER</td><td></td><td>x</td><td></td><td>yes (Does)</td><td></td><td></td></tr>
+            <tr><td rowspan="5"><div class="rank">2</div></td><td>Code geass</td><td>50</td><td>top 7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Banana fish</td><td style="text-align: center;">24</td><td>top 7</td><td></td><td>x</td><td>x</td><td>yes (Survive Said the Prophet)</td><td></td><td>Freaking hard topic, so good that I can forgive the drawing style</td></tr>
+            <tr><td>Kuroko no Baske</td><td style="text-align: center;">75</td><td>top 7</td><td></td><td></td><td></td><td>yes (Granrodeo)</td><td></td><td></td></tr>
+            <tr><td>Given</td><td style="text-align: center;">11</td><td>top 7</td><td></td><td>x</td><td>x</td><td>yes (Centimilimental)</td><td></td><td></td></tr>
+            <tr><td>Beelzebub</td><td style="text-align: center;">60</td><td>top 7</td><td></td><td></td><td></td><td>yes (Nozomi Sasaki)</td><td>Gintoki</td><td>Gintama 2 :D</td></tr>
+            <tr><td rowspan="4"><div class="rank">3</div></td><td>Grand blue</td><td>24</td><td>top 7</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Free!</td><td style="text-align: center;">39</td><td>top 7</td><td></td><td></td><td></td><td>yes (Oldcodex)</td><td></td><td></td></tr>
+            <tr><td>Rainbow</td><td style="text-align: center;">26</td><td>top7</td><td></td><td>x</td><td></td><td>yes (Coldrain)</td><td></td><td>Banana fish like</td></tr>
+            <tr><td>Jujutsu kaisen</td><td></td><td>top 7</td><td></td><td></td><td></td><td></td><td>Kagura +Takasugi</td><td>1st season - rest to be watched upon completion</td></tr>
+            <tr><td rowspan="2"><div class="rank">4</div></td><td>Hunter x hunter</td><td>148</td><td>top 7</td><td></td><td></td><td></td><td>yes (Masatoshi ono+Fear and loathing in LV)</td><td>Takasugi</td><td>1st 70 eps + last 10. Never watch the Chimera Ant Arc again!</td></tr>
+            <tr><td>Samurai Champloo</td><td style="text-align: center;">26</td><td>top 7</td><td></td><td></td><td></td><td></td><td></td><td>Unique</td></tr>
+            <tr><td rowspan="4"><div class="rank">5</div></td><td>Elfen lied</td><td>13</td><td>top 7</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Kaichou wa maid sama</td><td style="text-align: center;">26</td><td>top 7</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Attack on titan</td><td style="text-align: center;">89</td><td>top 7</td><td></td><td>x</td><td></td><td>yes (Linked Horizon+SiM)</td><td>Gintoki+ Takasugi</td><td>Season 1-2, rest is a NO - lacks originality</td></tr>
+            <tr><td>Paradise Kiss</td><td style="text-align: center;">12</td><td>top 7</td><td></td><td>x</td><td></td><td>yes (Tommy february6+Franz Ferdinand)</td><td></td><td></td></tr>
+            <tr><td><div class="rank">6</div></td><td>Ouran high school</td><td>26</td><td>top 7</td><td>x</td><td></td><td></td><td></td><td>Takasugi</td><td></td></tr>
+            <tr><td rowspan="2"><div class="rank">7</div></td><td>Seven deadly sins</td><td>100</td><td>top 7</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td>Unique among quest anime</td></tr>
+            <tr><td>Barakamon</td><td style="text-align: center;">12</td><td>top 7</td><td></td><td></td><td></td><td></td><td></td><td>Calligraphy, unique atmoshpere</td></tr>
+            <tr style="border-top:2.5pt solid darkgray;"><td></td><td>Aho girl</td><td>12</td><td>minigintama</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td></td></tr>
+            <tr><td></td><td>Daily life of high school boys</td><td>12</td><td>minigintama</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td></td></tr>
+            <tr><td></td><td>Devil may cry</td><td>12</td><td>Gintama 2</td><td></td><td></td><td></td><td></td><td></td><td>Gintama-like</td></tr>
+            <tr><td></td><td>Get backers</td><td>50</td><td>10</td><td></td><td></td><td></td><td></td><td>Takasugi</td><td>Gintama-like</td></tr>
+            <tr><td></td><td>The 100 girlfriends who (really)10 love you</td><td>12</td><td>10</td><td>x</td><td>x</td><td></td><td>yes (Daidaidaisuki)</td><td></td><td>Romcom Gintama, HILARIOUS, harem</td></tr>
+            <tr><td></td><td>Assassination classroom</td><td>47</td><td>10</td><td></td><td></td><td></td><td>yes (3-nen E-gumi Utatan)</td><td>Gintoki</td><td>Almost top 7</td></tr>
+            <tr><td></td><td>Brave 10</td><td>12</td><td>10</td><td></td><td></td><td></td><td>yes (Ono Daisuke&Kakihara Tetsuya)</td><td>Takasugi</td><td></td></tr>
+            <tr><td></td><td>Buddy daddies</td><td>12</td><td>10</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Nana</td><td>48</td><td>10</td><td>x</td><td>x</td><td></td><td></td><td>Zura</td><td>Nostalgic, this was the 1st anime I have watched</td></tr>
+            <tr><td></td><td>Your lie in April</td><td>12</td><td>10</td><td>x</td><td></td><td></td><td>yes (Goose House)</td><td></td><td>Amazing music pieces</td></tr>
+            <tr><td></td><td>Violet Evergarden</td><td>14 + final movie</td><td>9</td><td>x</td><td></td><td></td><td></td><td>Takasugi</td><td></td></tr>
+            <tr><td></td><td>The Wallflower-The 7 Metamorphoses of Yamato Nadeshiko</td><td>25</td><td>9</td><td>x</td><td></td><td></td><td></td><td>Gintoki</td><td>HILARIOUS</td></tr>
+            <tr><td></td><td>Kakegurui</td><td>25</td><td>9</td><td></td><td>x</td><td></td><td></td><td>Zura</td><td></td></tr>
+            <tr><td></td><td>Moriarty the patriot</td><td>24</td><td>9</td><td></td><td></td><td></td><td>yes (Tasuku Hatakana) </td><td></td><td></td></tr>
+            <tr><td></td><td>Migi and Dali</td><td>13</td><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Terror in resonance</td><td>11</td><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Kamisama Kiss</td><td>36</td><td>8</td><td>x</td><td></td><td></td><td></td><td>Zura</td><td></td></tr>
+            <tr><td></td><td>Vampire knight</td><td>26</td><td>8</td><td>x</td><td></td><td></td><td></td><td></td><td>Nostalgic, my 3rd anime</td></tr>
+            <tr><td></td><td>Kiss him not me</td><td>12</td><td>8</td><td>x</td><td></td><td></td><td></td><td></td><td>Margin yaoi, FUNNYYY</td></tr>
+            <tr><td></td><td>Hitorijime My Hero</td><td>12</td><td>8</td><td>x</td><td></td><td>x</td><td></td><td></td><td>WHOLESOME! Well addressed problem</td></tr>
+            <tr><td></td><td>Dakaichi</td><td>12</td><td>8</td><td>x</td><td>x</td><td>x</td><td></td><td></td><td>Sexual content</td></tr>
+            <tr><td></td><td>Fruits basket</td><td>63</td><td>8</td><td>x</td><td>x</td><td></td><td></td><td>Zura</td><td>Interesting, double release on season 1, both good</td></tr>
+            <tr><td></td><td>Kotaro lives alone</td><td>10</td><td>8</td><td></td><td></td><td></td><td></td><td></td><td>Unique</td></tr>
+            <tr><td></td><td>Noragami</td><td>24</td><td>8</td><td></td><td></td><td></td><td>yes (Hello Sleepwalkers + Oral Cigarettes)</td><td></td><td></td></tr>
+            <tr><td></td><td>The ancient magus' bride</td><td>24</td><td>8</td><td>x</td><td></td><td></td><td>yes (Junna)</td><td></td><td>BEAUTIFUL</td></tr>
+            <tr><td></td><td>Death Parade</td><td>12</td><td>8</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Basilisk</td><td>24</td><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Psycho pass</td><td>41</td><td>8</td><td></td><td>x</td><td></td><td></td><td>Takasugi, Zura</td><td>Season 1-2. Season 3 is USELESS</td></tr>
+            <tr><td></td><td>Mignon</td><td>12</td><td>8</td><td></td><td>x</td><td>x</td><td></td><td></td><td>Korean, unique, 4 min eps, sexual content</td></tr>
+            <tr><td></td><td>Rumbling hearts</td><td>14</td><td>8</td><td></td><td></td><td></td><td></td><td></td><td>Hard topic, disgusting solution, loved to hate it, thoughtprovoking</td></tr>
+            <tr><td></td><td>The Yuzuki Family's four sons</td><td>12</td><td>8</td><td></td><td></td><td></td><td></td><td></td><td>Comfort anime</td></tr>
+            <tr><td></td><td>Death note</td><td>37</td><td>7</td><td></td><td>x</td><td></td><td>yes (Maximum the Hormosne)</td><td></td><td></td></tr>
+            <tr><td></td><td>Inuyashiki</td><td>11</td><td>7</td><td></td><td></td><td></td><td>yes (Man with a Mission)</td><td></td><td>Made me uneasy a lot</td></tr>
+            <tr><td></td><td>Piano no Mori</td><td>26</td><td>7</td><td></td><td></td><td></td><td>yes (Dvorak)</td><td></td><td>Animation sucks, bad scene cuts but the story was astonishing</td></tr>
+            <tr><td></td><td>Darling in the FranXX</td><td>24</td><td>7</td><td></td><td></td><td></td><td></td><td></td><td>Strange, but captivating</td></tr>
+            <tr><td></td><td>Tadaima, Okaeri</td><td>12</td><td>7</td><td></td><td></td><td></td><td></td><td></td><td>Comfort anime</td></tr>
+            <tr><td></td><td>Hellsing</td><td>12</td><td>7</td><td></td><td></td><td></td><td></td><td>Takasugi</td><td>Interesting graphics, the older version!</td></tr>
+            <tr><td></td><td>Black butler season 1</td><td>24</td><td>7</td><td></td><td></td><td></td><td></td><td></td><td>Great ending!</td></tr>
+            <tr><td></td><td>Darker than black season 1</td><td>12</td><td>7</td><td></td><td></td><td></td><td>yes (An cafe)</td><td></td><td></td></tr>
+            <tr><td></td><td>Blue exorcist</td><td>37</td><td>7</td><td></td><td></td><td></td><td></td><td></td><td>The 1st 25 is a round and sound story, nice, rest is OK</td></tr>
+            <tr><td></td><td>SK8 Infinity</td><td>12</td><td>7</td><td></td><td></td><td></td><td></td><td>Takasugi</td><td></td></tr>
+            <tr><td></td><td>The promised neverland</td><td>23</td><td>7</td><td></td><td>x</td><td></td><td></td><td></td><td>1st season is better (8-9)</td></tr>
+            <tr><td></td><td>Tasogare out focus</td><td>12</td><td>7</td><td></td><td></td><td>x</td><td></td><td></td><td>Comfort anime</td></tr>
+            <tr><td></td><td>Dororo (2019)</td><td>26</td><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>My new boss is goofy</td><td>12</td><td>7</td><td></td><td></td><td></td><td></td><td></td><td>Comfort anime</td></tr>
+            <tr><td></td><td>Kakuriyo bread and breakfast for spirits</td><td>26</td><td>7</td><td></td><td></td><td></td><td></td><td></td><td>Comfort anime</td></tr>
+            <tr><td></td><td>Play it cool guys</td><td>26</td><td>7</td><td></td><td></td><td></td><td></td><td></td><td>Comfort, 10 min eps</td></tr>
+            <tr><td></td><td>School babysitter </td><td>13</td><td>7</td><td></td><td></td><td></td><td></td><td></td><td>Comfort anime</td></tr>
+            <tr><td></td><td> 7th Time Loop: The Villainess Enjoys a Carefree Life Married to Her Worst Enemy! </td><td>12</td><td>7</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Real girl kanojo</td><td>24</td><td>7</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr><tr style="border-top:2.5pt solid blue;"><td></td><td>Poco's udon place</td><td>12</td><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Goodnight world</td><td>12</td><td>6</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Angel beats</td><td>13</td><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Parasyte</td><td>24</td><td>6</td><td></td><td>x</td><td></td><td>yes (Fear and loathing in LV)</td><td></td><td></td></tr>
+            <tr><td></td><td>Say I love you</td><td>13</td><td>6</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Snow White with red hair</td><td>24</td><td>6</td><td>x</td><td></td><td></td><td></td><td>Zura</td><td>Fairy tale, cute</td></tr>
+            <tr><td></td><td>Blue period</td><td>12</td><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Horimiya+Missing Pieces</td><td>26</td><td>6</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Dive!!</td><td>12</td><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Vampire knight</td><td>26</td><td>6</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Uncle from another world</td><td>24</td><td>6</td><td></td><td></td><td></td><td></td><td>Takasugi</td><td></td></tr>
+            <tr><td></td><td>Bungo stray dogs</td><td>73</td><td>6</td><td></td><td></td><td></td><td></td><td>Zura</td><td>Is still ongoing, not worth finishing, was worth watching thou</td></tr>
+            <tr><td></td><td>Baccano</td><td>12</td><td>6-8</td><td></td><td>x</td><td></td><td>yes (Paradise Lunch)</td><td></td><td>Cannot decide, very strange</td></tr>
+            <tr><td></td><td>Bucchigiri</td><td>12</td><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Black clover</td><td>170</td><td>6</td><td></td><td></td><td></td><td>yes (Vickeblanka + Seiko Oomori)</td><td></td><td>Is still ongoing</td></tr>
+            <tr><td></td><td>Erased</td><td>13</td><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Mask danshi: this shouldn't lead to love</td><td>1</td><td>6</td><td>x</td><td></td><td>x</td><td></td><td></td><td>Concisely sums all romance/BL anime</td></tr>
+            <tr><td></td><td>Monster</td><td>74</td><td>6</td><td></td><td>x</td><td></td><td></td><td></td><td>Fucked up ending</td></tr>
+            <tr><td></td><td>Loving Yamada at Lv999</td><td>12</td><td>6</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Moribito- Guradian of the spirit</td><td>25</td><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Akame ga kill</td><td>24</td><td>5</td><td></td><td></td><td></td><td></td><td></td><td>The only good point is that everyone dies</td></tr>
+            <tr><td></td><td>Anohana</td><td>11</td><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Clannad</td><td>48</td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td>Could have been 7 if stopped at Ushio's death</td></tr>
+            <tr><td></td><td>A sign of affection</td><td>12</td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Plastic memories</td><td>13</td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Uzaki chan wa asobitai</td><td>26</td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Special A</td><td>24</td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>The wrong way to use healing magic</td><td>12</td><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Wolf girl and black prince</td><td></td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Haru wo Daiteita (Embracing Love)</td><td>2</td><td>5</td><td></td><td>x</td><td>x</td><td></td><td></td><td>Sexual content</td></tr>
+            <tr><td></td><td>Love stage</td><td>10</td><td>5</td><td></td><td>x</td><td>x</td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Cherry magic</td><td>12</td><td>5</td><td>x</td><td></td><td>x</td><td></td><td></td><td>They get married, nice</td></tr>
+            <tr><td></td><td>Junjou romantica</td><td>36</td><td>5</td><td></td><td>x</td><td>x</td><td></td><td></td><td>Season 3 is useless, sex only in season 1</td></tr>
+            <tr><td></td><td>From me to you</td><td>27</td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Fullmetal Alchemist Brotherhood</td><td>64</td><td>5</td><td></td><td></td><td></td><td></td><td></td><td>For kids</td></tr>
+            <tr><td></td><td>Yuri on ice</td><td>12</td><td>5</td><td>x</td><td></td><td>x</td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Darwin's game</td><td>12</td><td>5</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Ao haru ride</td><td>12</td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Orange</td><td>13</td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td>Shows nicely how depression works</td></tr>
+            <tr><td></td><td>Science fell in love and tried to prove it</td><td>24</td><td>5</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr><tr style="border-top:2.5pt solid orange;"><td></td><td>The Case Files of Jeweler Richard</td><td>12</td><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Apothecary Diaries</td><td>24</td><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Insomniacs after  school</td><td>13</td><td>4</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>My happy marriage</td><td>12</td><td>4</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>K</td><td>26</td><td>4</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td>Interesting animation and style, story is a bit ehh</td></tr>
+            <tr><td></td><td>Prison school</td><td>13</td><td>4</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Cowboy bebop</td><td>26</td><td>4</td><td></td><td></td><td></td><td></td><td></td><td>Not final ranking</td></tr>
+            <tr><td></td><td>Love is hard for otaku</td><td>11</td><td>4</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td></td></tr>
+            <tr><td></td><td>Scum's wish</td><td>12</td><td>4</td><td>x</td><td>x</td><td></td><td></td><td></td><td>Sexual content</td></tr>
+            <tr><td></td><td>Sket Dance</td><td>77</td><td>4</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td></td></tr>
+            <tr><td></td><td>Blood +</td><td>50</td><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Kaguya sama- Love is war</td><td>12</td><td>3</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Over the moon for you</td><td>13</td><td>3</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Spy x family</td><td>24</td><td>3</td><td></td><td></td><td></td><td></td><td></td><td>Buddy Daddies just boring</td></tr>
+            <tr><td></td><td>Dragon maid</td><td>12</td><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Sasaki to Miyano</td><td>12</td><td>3</td><td>x</td><td></td><td>x</td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>The devil is a part timer</td><td>12</td><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Inuyasha</td><td>167</td><td>3</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Mushibogyo</td><td>26</td><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Durarara!</td><td>25</td><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>The disastrous life of Saiki K.</td><td>120</td><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Prince of tennis</td><td>178</td><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>School rumble</td><td>26</td><td>3</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>The rising of the shield hero</td><td>25</td><td>3</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Another</td><td>12</td><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Lovely complex</td><td>24</td><td>3</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr style="border-top:2.5pt solid red;"><td></td><td>Konosuba</td><td>12</td><td>NOPE</td><td></td><td></td><td></td><td></td><td></td><td>Not even worth finishing, wanna be parody</td></tr>
+            <tr><td></td><td>My dress up darling</td><td>12</td><td>NOPE</td><td>x</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Black butler season 2</td><td>12</td><td>NOPE</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Draker than black season 2</td><td>12</td><td>NOPE</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Steins; Gate</td><td>24</td><td>NOPE</td><td>x</td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Tokyo Ghoul</td><td>36</td><td>NOPE</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Skip Beat</td><td>25</td><td>NOPE</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Future diary</td><td>26</td><td>NOPE</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Shiki</td><td>22</td><td>NOPE</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Devilman Crybaby</td><td>10</td><td>NOPE</td><td></td><td>x</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td>Yona of the dawn</td><td>24</td><td>8</td><td>x</td><td></td><td></td><td></td><td></td><td><span class="unfinished">UNFINISHED</span></td></tr>
+            <tr><td></td><td>The heroic legend of Arslan</td><td>33</td><td>6</td><td></td><td></td><td></td><td></td><td>Takasugi</td><td><span class="unfinished">UNFINISHED</span></td></tr>
+            <tr><td></td><td>D-Gray Man</td><td>103</td><td><span class="freaking-good">FREAKING good</span></td><td></td><td></td><td></td><td>yes (access)</td><td></td><td><span class="unfinished">UNFINISHED</span></td></tr>
+            <tr><td></td><td>No game no life</td><td>12</td><td><span class="freaking-good">FREAKING good</span></td><td></td><td></td><td></td><td></td><td>Kagura</td><td><span class="unfinished">UNFINISHED</span></td></tr>
+            <tr><td></td><td>Deadman wonderland</td><td>12</td><td><span class="freaking-good">FREAKING good</span></td><td></td><td></td><td></td><td>yes (DWB)</td><td></td><td><span class="unfinished">UNFINISHED</span></td></tr>   
+        </table>      
+    </div>
+
+    <div class="cards-container">
+        <!-- All cards will be generated by JavaScript -->
+    </div>
+
+    <script>
+        function toggleTooltip() {
+            const tooltip = document.getElementById('infoTooltip');
+            tooltip.style.display = tooltip.style.display === 'none' || tooltip.style.display === '' ? 'block' : 'none';
+        }
+
+        function toggleMobileTooltip() {
+            const tooltip = document.getElementById('mobileInfoTooltip');
+            tooltip.style.display = tooltip.style.display === 'none' || tooltip.style.display === '' ? 'block' : 'none';
+        }
+
+        // Close tooltip when clicking outside
+        document.addEventListener('click', function(event) {
+            const tooltip = document.getElementById('infoTooltip');
+            const mobileTooltip = document.getElementById('mobileInfoTooltip');
+            const button = document.querySelector('.info-button');
+            const mobileButton = document.querySelector('.mobile-info-button');
+            
+            if (button && !button.contains(event.target) && !tooltip.contains(event.target)) {
+                tooltip.style.display = 'none';
+            }
+            
+            if (mobileButton && !mobileButton.contains(event.target) && !mobileTooltip.contains(event.target)) {
+                mobileTooltip.style.display = 'none';
+            }
+        });
+
+        // Card generation script - only run on mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we're on mobile and generate cards only then
+            function generateCardsForMobile() {
+                if (window.innerWidth > 768) return; // Desktop - do nothing
+                
+                function createCardFromRow(row) {
+                    const cells = row.cells;
+                    if (cells.length < 10) return null;
+                    
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    
+                    function createCardRow(label, value, valueClass = '') {
+                        const rowDiv = document.createElement('div');
+                        rowDiv.className = 'card-row';
+                        
+                        const labelDiv = document.createElement('div');
+                        labelDiv.className = 'card-label';
+                        labelDiv.textContent = label;
+                        
+                        const valueDiv = document.createElement('div');
+                        valueDiv.className = 'card-value' + (valueClass ? ' ' + valueClass : '');
+                        
+                        if (label === 'Rank' && value) {
+                            const rankDiv = document.createElement('div');
+                            rankDiv.className = 'rank';
+                            rankDiv.textContent = value;
+                            valueDiv.appendChild(rankDiv);
+                        } else {
+                            valueDiv.innerHTML = value;
+                        }
+                        
+                        rowDiv.appendChild(labelDiv);
+                        rowDiv.appendChild(valueDiv);
+                        return rowDiv;
+                    }
+                    
+                    const rank = cells[0].textContent.trim();
+                    const title = cells[1].textContent.trim();
+                    const episodes = cells[2].textContent.trim();
+                    let evaluation = cells[3].textContent.trim();
+                    const romance = cells[4].textContent.trim();
+                    const forAdults = cells[5].textContent.trim();
+                    const yaoi = cells[6].textContent.trim();
+                    const introOutro = cells[7].textContent.trim();
+                    const voiceover = cells[8].textContent.trim();
+                    let comments = cells[9].textContent.trim();
+                    
+                    let evalClass = '';
+                    if (evaluation === 'THE BEST EVER') evalClass = 'best-ever';
+                    else if (evaluation.toLowerCase().includes('top 7')) evalClass = 'top7';
+                    else if (evaluation === 'NOPE') evalClass = 'nope';
+                    else if (evaluation.includes('FREAKING')) evalClass = 'freaking-good';
+                    
+                    if (cells[3].innerHTML.includes('span')) {
+                        evaluation = cells[3].innerHTML.trim();
+                    }
+                    
+                    if (cells[9].innerHTML.includes('span')) {
+                        comments = cells[9].innerHTML.trim();
+                    }
+
+                    card.appendChild(createCardRow('Rank', rank));
+                    card.appendChild(createCardRow('Title', title));
+                    card.appendChild(createCardRow('N.o. eps', episodes));
+                    card.appendChild(createCardRow('Evaluation', evaluation, evalClass));
+                    card.appendChild(createCardRow('Romance', romance));
+                    card.appendChild(createCardRow('For adults', forAdults));
+                    card.appendChild(createCardRow('Yaoi', yaoi));
+                    card.appendChild(createCardRow('Intro/outro', introOutro));
+                    card.appendChild(createCardRow('Relevant voiceover', voiceover));
+                    card.appendChild(createCardRow('Comments', comments));
+                    
+                    return card;
+                }
+                
+                function isSeparatorRow(row) {
+                    return row.getAttribute('style') && row.getAttribute('style').includes('border-top');
+                }
+                
+                const table = document.querySelector('table');
+                if (!table) return;
+                
+                const rows = Array.from(table.rows).slice(1);
+                const cardsContainer = document.querySelector('.cards-container');
+                if (!cardsContainer) return;
+                
+                rows.forEach(row => {
+                    if (isSeparatorRow(row)) {
+                        const separator = document.createElement('div');
+                        separator.style.height = '2.5pt';
+                        separator.style.backgroundColor = row.style.borderTopColor || 'silver';
+                        separator.style.margin = '10px 0';
+                        separator.style.width = '95%';
+                        separator.style.borderRadius = '2px';
+                        cardsContainer.appendChild(separator);
+                    }
+                    
+                    const card = createCardFromRow(row);
+                    if (card) {
+                        cardsContainer.appendChild(card);
+                    }
+                });
+            }
+            
+            generateCardsForMobile();
+            
+            // Also check on resize
+            window.addEventListener('resize', function() {
+                const cardsContainer = document.querySelector('.cards-container');
+                if (cardsContainer) {
+                    cardsContainer.innerHTML = ''; // Clear existing cards
+                    generateCardsForMobile(); // Regenerate if mobile
+                }
+            });
+        });
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "My Anime List Rankings",
+      "description": "A personal ranking of anime series with detailed evaluations and comments",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "TVSeries",
+            "name": "Gintama",
+            "numberOfEpisodes": "367",
+            "description": "THE BEST EVER"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "TVSeries",
+            "name": "Code Geass",
+            "numberOfEpisodes": "50",
+            "description": "top 7"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "TVSeries",
+            "name": "Grand Blue",
+            "numberOfEpisodes": "24",
+            "description": "top 7" 
+          }
+        }
+      ]
+    }
+    </script>
+</body>
+</html>
