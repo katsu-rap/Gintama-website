@@ -2,31 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>My anime list</title>
     <meta name="title" content="My Anime List - Featuring Gintama and Top Rated Anime Series">
     <meta name="description" content="A personal collection of ranked anime series with detailed ratings, episode counts, and special features. Discover top anime recommendations from a Gintama fan.">
     <meta name="keywords" content="anime list, Gintama, top anime, anime rankings, anime recommendations, best anime series, anime reviews">
-    <meta name="author" content="d'ORCA">
+    <meta name="author" content="dORCA">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="revisit-after" content="7 days">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://myanimeworld.org/animelist.html">
+    <meta property="og:url" content="https://yourwebsite.com/animelist.html">
     <meta property="og:title" content="My Anime World - Revolving Around Gintama">
     <meta property="og:description" content="Explore a collection of the best anime series ranked by a passionate fan. Features detailed ratings and comments on over 100 anime titles.">
     <meta property="og:image" content="https://yourwebsite.com/Gheader.png">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://myanimeworld.org/animelist.html">
+    <meta property="twitter:url" content="https://yourwebsite.com/animelist.html">
     <meta property="twitter:title" content="My Anime World - Revolving Around Gintama">
     <meta property="twitter:description" content="Explore a collection of the best anime series ranked by a passionate fan. Features detailed ratings and comments on over 100 anime titles.">
-    <meta property="twitter:image" content="https://myanimeworld.org/Gheader.png">
+    <meta property="twitter:image" content="https://yourwebsite.com/Gheader.png">
     <!-- Canonical URL -->
-    <meta rel="canonical" href="https://myanimeworld.org/animelist.html">
+    <meta rel="canonical" href="https://yourwebsite.com/animelist.html">
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- Mobile Specific -->
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#000000">
@@ -43,12 +45,14 @@
             width: 100%;
             height: 300px;
         }
+    
         .header-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             opacity: 0.37;
         }
+        
         .title-container {
             position: absolute;
             top: 0;
@@ -60,36 +64,41 @@
             justify-content: center;
             text-shadow: 2px 2px 4px black;
         }
+        
         .title-main {
             padding-left: 160px;
             font-size: 50pt; 
         }
+        
         .title-sub {
             text-align: center;
             font-size: 45pt; 
             margin-top: 30px;
         }
+        
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             max-width: 90%;
-            margin: 90px auto 70px;
+            margin: 90px auto 70px; /*top right bottom left, modify these to put table closer to or farther from title*/
             background-color: #1a1a1a;
             padding: 5px 0 0 0;
             border-radius: 8px;
             box-shadow: 0 4px 10px green;
             position: relative;
         }
+            
+        
+        /* Table container for enhanced visibility */
         .table-container {
             display: inline-block;
             width: fit-content;
             margin: 20px auto;
             background-color: #1a1a1a;
             padding: 0;
-            border-radius: 8px;
-        }
-        .anime-movies-link {
+            border-radius: 8px;}
+        .anime-movies-link { /*button for desktop view*/
             text-align: right;
             position: absolute;
             right: 20px;
@@ -100,10 +109,10 @@
 
         h1 {
             text-align: center;
-            margin: 40px 0 15px;
+            margin: 40px 0 15px; /*top right bottom left, modify these to put title closer to or farther from header*/
             color: #ffffff;
             font-size: 36pt;
-            position: relative;
+            position:relative;
             z-index: 5;
             letter-spacing: 1px;
             padding-bottom: 10px;
@@ -112,14 +121,14 @@
             display: inline-block;
             margin-left: 50%;
             margin-bottom: 0;
-            transform: translateX(-50%);
-        }
+            transform: translateX(-50%);}
         
         table { 
             border-collapse: collapse;
             border-spacing: 0; 
             margin: 0;
-            width: 100%;
+            border-spacing: 0;
+            width: 100%; /* Makes table narrower */
             font-size: 15px;
             background: transparent;
             table-layout: auto;
@@ -145,6 +154,7 @@
             z-index: 1001;
         } 
     
+        /* Style ranking numbers like in metalsongs.html */
         .rank { 
             display: inline-flex;
             justify-content: center;
@@ -160,223 +170,247 @@
             border: 1.5px solid lightseagreen;
         }
 
-        td:nth-of-type(1),
-        td:nth-of-type(7),
-        td:nth-of-type(9) { 
+        /* Left align columns 2, 8, and 10 regardless of rowspan */
+        td:nth-of-type(1),  /* Title */
+        td:nth-of-type(7),  /* Intro/outro */
+        td:nth-of-type(9)   /* Comments */ { 
             text-align: left !important; 
         }
         
+        /* Target Title column */
         td:nth-child(2) { text-align: left; }
+
+        /* Target Intro/outro column */
         td:nth-child(8) { text-align: left; }
+
+        /* Target Comments column */
         td:nth-child(10) { text-align: left; }
-        
-        td:nth-child(10):has(> span.unfinished) { color: red; }
+        /* Style for unfinished and freaking-good */
+        td:nth-child(10):has(> span.unfinished) { color: red; } /*column number us in brackets*/
         td:nth-child(4):has(> span.freaking-good) { color: darkgreen; }
 
-        .info-button {
-            position: absolute;
-            top: 455px;
-            left: 85px;
-            width: 25px;
-            height: 25px;
-            background-color: lightseagreen;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-            border: 1.5px solid lightseagreen;
-            z-index: 1002;
-        }
+    .info-button {
+        position: absolute;
+        top: 455px;
+        left: 85px; /* Position it above the Rank column */
+        width: 25px;
+        height: 25px;
+        background-color: lightseagreen;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+        border: 1.5px solid lightseagreen;
+        z-index: 1002;
+    }
 
-        .info-tooltip {
-            position: absolute;
-            top: 300px;
-            left: 50px;
-            background-color: lightseagreen;
-            color: black;
-            font-weight: bold;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            line-height: 1.4;
-            white-space: pre-line;
-            min-width: 300px;
-            max-width: 400px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            z-index: 1003;
-            display: none;
-        }
+    .info-tooltip {
+        position: absolute;
+        top: 300px; /* Position below the button */
+        left: 50px;
+        background-color: lightseagreen;
+        color: black;
+        font-weight: bold;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        line-height: 1.4;
+        white-space: pre-line;
+        min-width: 300px;
+        max-width: 400px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        z-index: 1003;
+        display: none;
+    }
 
-        .info-tooltip::after {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 20px;
-            border: 8px solid transparent;
-            border-bottom-color: lightseagreen;
-        }
+    .info-tooltip::after {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 20px;
+        border: 8px solid transparent;
+        border-bottom-color: lightseagreen;
+    }
     
-        @media (max-width: 768px) {
-            .header {
-                height: auto;
-                min-height: 150px;
-            }
-            .header-image { 
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-            h1 {
-                font-size: 20pt;
-                width: 60%;
-                margin: 40px auto 25px;
-                transform: translate(0); 
-                border-bottom: 2px orange;
-                display: block;
-            }
-            .mobile-movies-button {
-                text-align: right;
-                padding: 0 20px;
-                margin-bottom: 3px;
-                width: 90%; 
-            }
-            body {
-                font-size: 14px;
-                padding: 0;
-                margin: 0;
-                width: 100%;
-                overflow-x: hidden;
-            }
-            .title-main {
-                text-align: center;
-                padding-left: 0;
-                font-size: 24pt;
-            }
-            .title-sub {
-                font-size: 20pt;
-                margin-top: 15px;
-            }
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+        min-height: 150px;
+    }
+    .header-image { 
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    h1 {
+        text-align: center;
+        font-size: 20pt;
+        width: 60%;
+        margin: 40px auto 25px;
+        transform:translate(0); 
+        border-bottom: 2px orange;
+        display:block;
+    }
+    .mobile-movies-button { /*button for mobile view*/
+        text-align: right;
+        padding: 0 20px;
+        margin-bottom: 3px;
+        width: 90%; 
+    }
+    body {
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .title-main {
+        text-align: center;
+        padding-left: 0;
+        font-size: 24pt;
+    }
+    .title-sub {
+        font-size: 20pt;
+        margin-top: 15px;
+    }
 
-            .table-container,
-            .container,
-            .anime-movies-link,
-            .info-button {
-                display: none;
-            }
-            
-            .mobile-info-button {
-                display: flex;
-                position: absolute;
-                top: 250px;
-                left: 30px;
-                width: 25px;
-                height: 25px;
-                background-color: lightseagreen;
-                color: white;
-                border-radius: 50%;
-                justify-content: center;
-                align-items: center;
-                font-weight: bold;
-                font-size: 14px;
-                cursor: pointer;
-                border: 1.5px solid lightseagreen;
-                z-index: 1002;
-            }
-            .mobile-info-tooltip {
-                position: fixed;
-                top: 55px;
-                left: 20px;
-                background-color: lightseagreen;
-                color: black;
-                padding: 12px;
-                border-radius: 8px;
-                font-size: 12px;
-                font-weight: bold;
-                line-height: 1.4;
-                white-space: pre-line;
-                min-width: 280px;
-                max-width: 320px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-                z-index: 1003;
-                display: none;
-            }
-            .mobile-info-tooltip::after {
-                content: '';
-                position: absolute;
-                top: -8px;
-                left: 20px;
-                border: 8px solid transparent;
-                border-bottom-color: lightseagreen;
-            }
+    /* Hide table on mobile */
+    .table-container {
+        display: none;
+    }
+    .container {
+        display: none;
+    }
+    .anime-movies-link {
+    display: none;
+    }
+    .info-button {
+    display: none;
+    }
+    
+    .mobile-info-button {
+        display: flex;
+        position: absolute;
+        top: 250px;
+        left: 30px;
+        width: 25px;
+        height: 25px;
+        background-color: lightseagreen;
+        color: white;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+        border: 1.5px solid lightseagreen;
+        z-index: 1002;
+    }
+    .mobile-info-tooltip {
+        position: fixed;
+        top: 55px;
+        left: 20px;
+        background-color: lightseagreen;
+        color: black;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.4;
+        white-space: pre-line;
+        min-width: 280px;
+        max-width: 320px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        z-index: 1003;
+        display: none;
+    }
+    .mobile-info-tooltip::after {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 20px;
+        border: 8px solid transparent;
+        border-bottom-color: lightseagreen;
+    }
+    /* Show cards container on mobile */
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 70px;
+        position:relative;
+    }
+    .card {
+        width: 90%;
+        background-color: #1a1a1a;
+        border: 2px solid green;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 255, 0, 0.3);
+        position: relative;
+    }
+    .card-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        align-items: flex-start;
+        border-bottom: 1px solid lightgreen;
+        padding-bottom: 5px;
+    }
+    .card-label {
+        color: white;
+        width: 120px;
+        font-weight: bold;
+    }
+    .card-value {
+        flex: 1;
+        text-align: right;
+        font-weight: bold;
+    }
+    .best-ever {
+        color: lightseagreen;
+        font-weight: bold;
+    }
+    .top7 {
+        color: white;
+    }
+    .freaking-good {
+        color: darkgreen;
+    }
+    .unfinished {
+        color: red;
+    }
+    .nope {
+        color: red;
+    }
+}
 
-            .cards-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 22px;
-                width: 100%;
-                padding: 10px;
-                box-sizing: border-box;
-                margin-bottom: 70px;
-                position: relative;
-            }
-            .card {
-                width: 90%;
-                background-color: #1a1a1a;
-                border: 2px solid green;
-                border-radius: 8px;
-                padding: 10px;
-                box-shadow: 0 2px 5px rgba(0, 255, 0, 0.3);
-                position: relative;
-            }
-            .card-row {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 5px;
-                align-items: flex-start;
-                border-bottom: 1px solid lightgreen;
-                padding-bottom: 5px;
-            }
-            .card-label {
-                color: white;
-                width: 120px;
-                font-weight: bold;
-            }
-            .card-value {
-                flex: 1;
-                text-align: right;
-                font-weight: bold;
-            }
-            .best-ever {
-                color: lightseagreen;
-                font-weight: bold;
-            }
-            .top7 {
-                color: white;
-            }
-            .freaking-good {
-                color: darkgreen;
-            }
-            .unfinished {
-                color: red;
-            }
-            .nope {
-                color: red;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .cards-container,
-            .mobile-movies-button,
-            .mobile-info-button,
-            .mobile-info-tooltip {
-                display: none;
-            }
-        }
+@media (min-width: 769px) {
+    /* Hide cards on desktop */
+    .cards-container {
+        display: none;
+    }
+    .mobile-movies-button{
+        display: none;
+    }
+    .mobile-movies-button{
+        display: none;
+    }
+    .mobile-info-button {
+        display: none;
+    }
+    .mobile-info-tooltip {
+        display: none;
+    }
+}
     </style>
 </head>
 <body>
@@ -390,49 +424,52 @@
         </div>
     </a>
     
-    <h1>My Anime List</h1>
-    <div class="anime-movies-link" style="text-align: right; padding: 0 20px; margin: 70px 50px 70px;">
+        <h1>My Anime List</h1>
+        <div class="anime-movies-link" style="text-align: right; padding: 0 20px; margin: 70px 50px 70px;">
         <a href="#" onclick="window.open('aniMovies.html','_blank');" style="color: white; text-decoration: none; font-size: 17px;">
             Anime movies list <span style="margin-left: 5px; color: orange; font-weight: bold; font-size: 22px;">→</span>
         </a>
-    </div>
-    <div class="mobile-movies-button">
+      </div>
+      <div class="mobile-movies-button">
         <a href="#" onclick="window.open('aniMovies.html','_blank');" style="color: white; text-decoration: none; font-size: 14px;">
-            Anime movies list <span style="margin-left:5px; color: orange; font-weight: bold; font-size: 17px;">→</span>
+            Anime movies list <span style="margin-left:5px; color: orange; font-weight: bold; font: size 17px;">→</span>
         </a>
-    </div>
-    <div class="info-button" onclick="toggleTooltip()">i</div>
-    <div class="info-tooltip" id="infoTooltip"> 1) Rank: Anime that don't fit a 10 scale because they are much better. Having the same rank means none of them outdoes the other.
-        2) Evaluation: Anime are scored from 0-10 (except the ranked ones) based on my opinion.
-        3) Romance, adult, yaoi: Marked x if anime fits the category
-        4) Intro/outro: Marked yes if I liked it
-        5) Relevant voiceover: If the anime has a major Gintama voice actor in it (mainly Sugita or Koyasu)
-        <span style="color: white ">If you are looking for a certain anime use Ctrl+F, if it's listed this will find it for you."</span>
-    </div>
-    <div class="mobile-info-button" onclick="toggleMobileTooltip()">i</div>
-    <div class="mobile-info-tooltip" id="mobileInfoTooltip"> 1) Rank: Anime that don't fit a 10 scale because they are much better. Having the same rank means none of them outdoes the other.
-        2) Evaluation: Anime are scored from 0-10 (except the ranked ones) based on my opinion.
-        3) Romance, adult, yaoi: Marked x if anime fits the category
-        4) Intro/outro: Marked yes if I liked it
-        5) Relevant voiceover: If the anime has a major Gintama voice actor in it (mainly Sugita or Koyasu)
-    </div>
-    <div class="container"> 
+        </div>
+        <div class="info-button" onclick="toggleTooltip()">i</div>
+        <div class="info-tooltip" id="infoTooltip"> 1) Rank: Anime that don't fit a 10 scale because they are much better. Having the same rank means none of them outdoes the other.
+            2) Evaluation: Anime are scored from 0-10 (except the ranked ones) based on my opinion.
+            3) Romance, adult, yaoi: Marked x if anime fits the category
+            4) Intro/outro: Marked yes if I liked it
+            5) Relevant voiceover: If the anime has a major Gintama voice actor in it (mainly Sugita or Koyasu)
+            <span style="color: white ">If you are looking for a certain anime use Ctrl+F, if it's listed this will find it for you."</span>
+        </div>
+        <div class="mobile-info-button" onclick="toggleMobileTooltip()">i</div>
+        <div class="mobile-info-tooltip" id="mobileInfoTooltip"> 1) Rank: Anime that don't fit a 10 scale because they are much better. Having the same rank means none of them outdoes the other.
+            2) Evaluation: Anime are scored from 0-10 (except the ranked ones) based on my opinion.
+            3) Romance, adult, yaoi: Marked x if anime fits the category
+            4) Intro/outro: Marked yes if I liked it
+            5) Relevant voiceover: If the anime has a major Gintama voice actor in it (mainly Sugita or Koyasu)
+        </div>
+        <div class="container"> 
         <table>
             <tr>
-                <th>Rank</th>
-                <th>Title</th>
-                <th>N.o. eps</th>
-                <th>Evaluation</th>
-                <th>Romance</th>
-                <th>For adults</th>
-                <th>Yaoi</th>
-                <th>Intro/outro</th>
-                <th>Relevant voiceover</th>
-                <th>Comments</th>
-            </tr>
+                    <th>Rank</th>
+                    <th>Title</th>
+                    <th>N.o. eps</th>
+                    <th>Evaluation</th>
+                    <th>Romance</th>
+                    <th>For adults</th>
+                    <th>Yaoi</th>
+                    <th>Intro/outro</th>
+                    <th>Relevant voiceover</th>
+                    <th>Comments</th>
+                </tr>
+                
+        
+            <!-- Rows generated from JSON data -->
             <tr><td><div class="rank">1</div></td><td>Gintama</td><td>367 + final movie</td><td style="font-weight: bold; color: lightseagreen;">THE BEST EVER</td><td></td><td>x</td><td></td><td>yes (Does)</td><td></td><td></td></tr>
             <tr><td rowspan="5"><div class="rank">2</div></td><td>Code geass</td><td>50</td><td>top 7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>Banana fish</td><td style="text-align: center;">24</td><td>top 7</td><td></td><td>x</td><td>x</td><td>yes (Survive Said the Prophet)</td><td></td><td>Freaking hard topic, so good that I can forgive the drawing style</td></tr>
+            <tr><td>Banana fish</td><td style="text-align: center;">24</td></td><td>top 7</td><td></td><td>x</td><td>x</td><td>yes (Survive Said the Prophet)</td><td></td><td>Freaking hard topic, so good that I can forgive the drawing style</td></tr>
             <tr><td>Kuroko no Baske</td><td style="text-align: center;">75</td><td>top 7</td><td></td><td></td><td></td><td>yes (Granrodeo)</td><td></td><td></td></tr>
             <tr><td>Given</td><td style="text-align: center;">11</td><td>top 7</td><td></td><td>x</td><td>x</td><td>yes (Centimilimental)</td><td></td><td></td></tr>
             <tr><td>Beelzebub</td><td style="text-align: center;">60</td><td>top 7</td><td></td><td></td><td></td><td>yes (Nozomi Sasaki)</td><td>Gintoki</td><td>Gintama 2 :D</td></tr>
@@ -448,8 +485,7 @@
             <tr><td>Paradise Kiss</td><td style="text-align: center;">12</td><td>top 7</td><td></td><td>x</td><td></td><td>yes (Tommy february6+Franz Ferdinand)</td><td></td><td></td></tr>
             <tr><td><div class="rank">6</div></td><td>Ouran high school</td><td>26</td><td>top 7</td><td>x</td><td></td><td></td><td></td><td>Takasugi</td><td></td></tr>
             <tr><td rowspan="2"><div class="rank">7</div></td><td>Seven deadly sins</td><td>100</td><td>top 7</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td>Unique among quest anime</td></tr>
-            <tr><td>Barakamon</td><td style="text-align: center;">12</td><td>top 7</td><td></td><td></td><td></td><td></td><td></td><td>Calligraphy, unique atmoshpere</td></tr>
-            <tr style="border-top:2.5pt solid darkgray;"><td></td><td>Aho girl</td><td>12</td><td>minigintama</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td></td></tr>
+            <tr><td>Barakamon</td><td style="text-align: center;">12</td><td>top 7</td><td></td><td></td><td></td><td></td><td></td><td>Calligraphy, unique atmoshpere</td></tr><tr style="border-top:2.5pt solid darkgray;"><td></td><td>Aho girl</td><td>12</td><td>minigintama</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td></td></tr>
             <tr><td></td><td>Daily life of high school boys</td><td>12</td><td>minigintama</td><td></td><td></td><td></td><td></td><td>Gintoki</td><td></td></tr>
             <tr><td></td><td>Devil may cry</td><td>12</td><td>Gintama 2</td><td></td><td></td><td></td><td></td><td></td><td>Gintama-like</td></tr>
             <tr><td></td><td>Get backers</td><td>50</td><td>10</td><td></td><td></td><td></td><td></td><td>Takasugi</td><td>Gintama-like</td></tr>
@@ -579,161 +615,1034 @@
             <tr><td></td><td>No game no life</td><td>12</td><td><span class="freaking-good">FREAKING good</span></td><td></td><td></td><td></td><td></td><td>Kagura</td><td><span class="unfinished">UNFINISHED</span></td></tr>
             <tr><td></td><td>Deadman wonderland</td><td>12</td><td><span class="freaking-good">FREAKING good</span></td><td></td><td></td><td></td><td>yes (DWB)</td><td></td><td><span class="unfinished">UNFINISHED</span></td></tr>   
         </table>      
-    </div>
+        </div>
 
     <div class="cards-container">
-        <!-- All cards will be generated by JavaScript -->
+        <!-- Card for Gintama -->
+        <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">1</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Gintama</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">367 + final movie</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value best-ever">THE BEST EVER</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value">x</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value">yes (Does)</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value"></div>
+            </div>
+        </div>
+        
+        <!-- Card for Code geass -->
+        <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">2</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Code geass</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">50</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value"></div>
+            </div>
+        </div>
+        
+        <!-- Card for Banana fish -->
+        <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">2</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Banana fish</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">24</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value">x</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value">x</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value">yes (Survive Said the Prophet)</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value">Freaking hard topic, so good that I can forgive the drawing style</div>
+            </div>
+        </div>
+         <!-- Kuroko no Baske -->
+         <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">2</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Kuroko no Baske</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">75</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value">yes (Granrodeo)</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value"></div>
+            </div>
+        </div>
+        
+        <!-- Given -->
+        <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">2</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Given</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">11</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value">x</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value">x</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value">yes (Centimilimental)</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value"></div>
+            </div>
+        </div>
+        
+        <!-- Beelzebub -->
+        <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">2</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Beelzebub</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">60</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value">yes (Nozomi Sasaki)</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value">Gintoki</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value">Gintama 2 :D</div>
+            </div>
+        </div>
+        <!-- Grand blue -->
+    <div class="card">
+        <div class="card-row">
+            <div class="card-label">Rank</div>
+            <div class="card-value"><div class="rank">3</div></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Title</div>
+            <div class="card-value">Grand blue</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">N.o. eps</div>
+            <div class="card-value">24</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Evaluation</div>
+            <div class="card-value top7">top 7</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Romance</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">For adults</div>
+            <div class="card-value">x</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Yaoi</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Intro/outro</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Relevant voiceover</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Comments</div>
+            <div class="card-value"></div>
+        </div>
     </div>
 
-    <script>
-        function toggleTooltip() {
-            const tooltip = document.getElementById('infoTooltip');
-            tooltip.style.display = tooltip.style.display === 'none' || tooltip.style.display === '' ? 'block' : 'none';
-        }
+    <!-- Free! -->
+    <div class="card">
+        <div class="card-row">
+            <div class="card-label">Rank</div>
+            <div class="card-value"><div class="rank">3</div></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Title</div>
+            <div class="card-value">Free!</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">N.o. eps</div>
+            <div class="card-value">39</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Evaluation</div>
+            <div class="card-value top7">top 7</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Romance</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">For adults</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Yaoi</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Intro/outro</div>
+            <div class="card-value">yes (Oldcodex)</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Relevant voiceover</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Comments</div>
+            <div class="card-value"></div>
+        </div>
+    </div>
 
-        function toggleMobileTooltip() {
-            const tooltip = document.getElementById('mobileInfoTooltip');
-            tooltip.style.display = tooltip.style.display === 'none' || tooltip.style.display === '' ? 'block' : 'none';
-        }
+    <!-- Rainbow -->
+    <div class="card">
+        <div class="card-row">
+            <div class="card-label">Rank</div>
+            <div class="card-value"><div class="rank">3</div></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Title</div>
+            <div class="card-value">Rainbow</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">N.o. eps</div>
+            <div class="card-value">26</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Evaluation</div>
+            <div class="card-value top7">top7</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Romance</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">For adults</div>
+            <div class="card-value">x</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Yaoi</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Intro/outro</div>
+            <div class="card-value">yes (Coldrain)</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Relevant voiceover</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Comments</div>
+            <div class="card-value">Banana fish like</div>
+        </div>
+    </div>
 
-        // Close tooltip when clicking outside
-        document.addEventListener('click', function(event) {
-            const tooltip = document.getElementById('infoTooltip');
-            const mobileTooltip = document.getElementById('mobileInfoTooltip');
-            const button = document.querySelector('.info-button');
-            const mobileButton = document.querySelector('.mobile-info-button');
+    <!-- Jujutsu kaisen -->
+    <div class="card">
+        <div class="card-row">
+            <div class="card-label">Rank</div>
+            <div class="card-value"><div class="rank">3</div></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Title</div>
+            <div class="card-value">Jujutsu kaisen</div>
+        </div>
+        <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value">Kagura +Takasugi</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value">1st season - rest to be watched upon completion</div>
+            </div>
+        </div>
+
+        <!-- Hunter x hunter -->
+        <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">4</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Hunter x hunter</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">148</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value">yes (Masatoshi ono+Fear and loathing in LV)</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value">Takasugi</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value">1st 70 eps + last 10. Never watch the Chimera Ant Arc again!</div>
+            </div>
+        </div>
+
+        
+        <!-- Samurai Champloo -->
+        <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">4</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Samurai Champloo</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">26</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value">Unique</div>
+            </div>
+        </div>
+
+        <!-- Elfen lied -->
+        <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">5</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Elfen lied</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">13</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value">x</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value"></div>
+            </div>
+        </div>
+
+        <!-- Kaichou wa maid sama -->
+        <div class="card">
+            <div class="card-row">
+                <div class="card-label">Rank</div>
+                <div class="card-value"><div class="rank">5</div></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Title</div>
+                <div class="card-value">Kaichou wa maid sama</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">N.o. eps</div>
+                <div class="card-value">26</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Evaluation</div>
+                <div class="card-value top7">top 7</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Romance</div>
+                <div class="card-value">x</div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">For adults</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Yaoi</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Intro/outro</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Relevant voiceover</div>
+                <div class="card-value"></div>
+            </div>
+            <div class="card-row">
+                <div class="card-label">Comments</div>
+                <div class="card-value"></div>
+            </div>
+    </div>
+    <!-- Attack on titan -->
+    <div class="card">
+        <div class="card-row">
+            <div class="card-label">Rank</div>
+            <div class="card-value"><div class="rank">5</div></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Title</div>
+            <div class="card-value">Attack on titan</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">N.o. eps</div>
+            <div class="card-value">89</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Evaluation</div>
+            <div class="card-value top7">top 7</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Romance</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">For adults</div>
+            <div class="card-value">x</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Yaoi</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Intro/outro</div>
+            <div class="card-value">yes (Linked Horizon+SiM)</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Relevant voiceover</div>
+            <div class="card-value">Gintoki+ Takasugi</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Comments</div>
+            <div class="card-value">Season 1-2, rest is a NO - lacks originality</div>
+        </div>
+    </div>
+
+    <!-- Paradise Kiss -->
+    <div class="card">
+        <div class="card-row">
+            <div class="card-label">Rank</div>
+            <div class="card-value"><div class="rank">5</div></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Title</div>
+            <div class="card-value">Paradise Kiss</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">N.o. eps</div>
+            <div class="card-value">12</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Evaluation</div>
+            <div class="card-value top7">top 7</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Romance</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">For adults</div>
+            <div class="card-value">x</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Yaoi</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Intro/outro</div>
+            <div class="card-value">yes (Tommy february6+Franz Ferdinand)</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Relevant voiceover</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Comments</div>
+            <div class="card-value"></div>
+        </div>
+    </div>
+
+    <!-- Ouran high school -->
+    <div class="card">
+        <div class="card-row">
+            <div class="card-label">Rank</div>
+            <div class="card-value"><div class="rank">6</div></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Title</div>
+            <div class="card-value">Ouran high school</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">N.o. eps</div>
+            <div class="card-value">26</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Evaluation</div>
+            <div class="card-value top7">top 7</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Romance</div>
+            <div class="card-value">x</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">For adults</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Yaoi</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Intro/outro</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Relevant voiceover</div>
+            <div class="card-value">Takasugi</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Comments</div>
+            <div class="card-value"></div>
+        </div>
+    </div>
+
+    <!-- Seven deadly sins -->
+    <div class="card">
+        <div class="card-row">
+            <div class="card-label">Rank</div>
+            <div class="card-value"><div class="rank">7</div></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Title</div>
+            <div class="card-value">Seven deadly sins</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">N.o. eps</div>
+            <div class="card-value">100</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Evaluation</div>
+            <div class="card-value top7">top 7</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Romance</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">For adults</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Yaoi</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Intro/outro</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Relevant voiceover</div>
+            <div class="card-value">Gintoki</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Comments</div>
+            <div class="card-value">Unique among quest anime</div>
+        </div>
+    </div>
+
+    <!-- Barakamon -->
+    <div class="card">
+        <div class="card-row">
+            <div class="card-label">Rank</div>
+            <div class="card-value"><div class="rank">7</div></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Title</div>
+            <div class="card-value">Barakamon</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">N.o. eps</div>
+            <div class="card-value">12</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Evaluation</div>
+            <div class="card-value top7">top 7</div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Romance</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">For adults</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Yaoi</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Intro/outro</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Relevant voiceover</div>
+            <div class="card-value"></div>
+        </div>
+        <div class="card-row">
+            <div class="card-label">Comments</div>
+            <div class="card-value">Calligraphy, unique atmoshpere</div>
+        </div>
+    </div>
+ <script>
+ // This script automatically generates cards for all non-ranked anime
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to create a card element based on table row data
+    function createCardFromRow(row) {
+        const cells = row.cells;
+        if (cells.length < 10) return null; // Skip invalid rows
+        
+        // Create card container
+        const card = document.createElement('div');
+        card.className = 'card';
+        
+        // Helper function to create a card row with label and value
+        function createCardRow(label, value, valueClass = '') {
+            const rowDiv = document.createElement('div');
+            rowDiv.className = 'card-row';
             
-            if (button && !button.contains(event.target) && !tooltip.contains(event.target)) {
-                tooltip.style.display = 'none';
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'card-label';
+            labelDiv.textContent = label;
+            
+            const valueDiv = document.createElement('div');
+            valueDiv.className = 'card-value' + (valueClass ? ' ' + valueClass : '');
+            
+            // Handle special case for rank with circular display
+            if (label === 'Rank' && value) {
+                const rankDiv = document.createElement('div');
+                rankDiv.className = 'rank';
+                rankDiv.textContent = value;
+                valueDiv.appendChild(rankDiv);
+            } else {
+                valueDiv.innerHTML = value; // Use innerHTML to preserve any HTML formatting
             }
             
-            if (mobileButton && !mobileButton.contains(event.target) && !mobileTooltip.contains(event.target)) {
-                mobileTooltip.style.display = 'none';
-            }
-        });
-
-        // Card generation script - only run on mobile
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if we're on mobile and generate cards only then
-            function generateCardsForMobile() {
-                if (window.innerWidth > 768) return; // Desktop - do nothing
-                
-                function createCardFromRow(row) {
-                    const cells = row.cells;
-                    if (cells.length < 10) return null;
-                    
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    
-                    function createCardRow(label, value, valueClass = '') {
-                        const rowDiv = document.createElement('div');
-                        rowDiv.className = 'card-row';
-                        
-                        const labelDiv = document.createElement('div');
-                        labelDiv.className = 'card-label';
-                        labelDiv.textContent = label;
-                        
-                        const valueDiv = document.createElement('div');
-                        valueDiv.className = 'card-value' + (valueClass ? ' ' + valueClass : '');
-                        
-                        if (label === 'Rank' && value) {
-                            const rankDiv = document.createElement('div');
-                            rankDiv.className = 'rank';
-                            rankDiv.textContent = value;
-                            valueDiv.appendChild(rankDiv);
-                        } else {
-                            valueDiv.innerHTML = value;
-                        }
-                        
-                        rowDiv.appendChild(labelDiv);
-                        rowDiv.appendChild(valueDiv);
-                        return rowDiv;
-                    }
-                    
-                    const rank = cells[0].textContent.trim();
-                    const title = cells[1].textContent.trim();
-                    const episodes = cells[2].textContent.trim();
-                    let evaluation = cells[3].textContent.trim();
-                    const romance = cells[4].textContent.trim();
-                    const forAdults = cells[5].textContent.trim();
-                    const yaoi = cells[6].textContent.trim();
-                    const introOutro = cells[7].textContent.trim();
-                    const voiceover = cells[8].textContent.trim();
-                    let comments = cells[9].textContent.trim();
-                    
-                    let evalClass = '';
-                    if (evaluation === 'THE BEST EVER') evalClass = 'best-ever';
-                    else if (evaluation.toLowerCase().includes('top 7')) evalClass = 'top7';
-                    else if (evaluation === 'NOPE') evalClass = 'nope';
-                    else if (evaluation.includes('FREAKING')) evalClass = 'freaking-good';
-                    
-                    if (cells[3].innerHTML.includes('span')) {
-                        evaluation = cells[3].innerHTML.trim();
-                    }
-                    
-                    if (cells[9].innerHTML.includes('span')) {
-                        comments = cells[9].innerHTML.trim();
-                    }
-
-                     if (rank) {
-                    card.appendChild(createCardRow('Rank', rank));
-                    }
-                    card.appendChild(createCardRow('Title', title));
-                    card.appendChild(createCardRow('N.o. eps', episodes));
-                    card.appendChild(createCardRow('Evaluation', evaluation, evalClass));
-                    card.appendChild(createCardRow('Romance', romance));
-                    card.appendChild(createCardRow('For adults', forAdults));
-                    card.appendChild(createCardRow('Yaoi', yaoi));
-                    card.appendChild(createCardRow('Intro/outro', introOutro));
-                    card.appendChild(createCardRow('Relevant voiceover', voiceover));
-                    card.appendChild(createCardRow('Comments', comments));
-                    
-                    return card;
-                }
-                
-                function isSeparatorRow(row) {
-                    return row.getAttribute('style') && row.getAttribute('style').includes('border-top');
-                }
-                
-                const table = document.querySelector('table');
-                if (!table) return;
-                
-                const rows = Array.from(table.rows).slice(1);
-                const cardsContainer = document.querySelector('.cards-container');
-                if (!cardsContainer) return;
-                
-                rows.forEach(row => {
-                    if (isSeparatorRow(row)) {
-                        const separator = document.createElement('div');
-                        separator.style.height = '2.5pt';
-                        separator.style.backgroundColor = row.style.borderTopColor || 'silver';
-                        separator.style.margin = '10px 0';
-                        separator.style.width = '95%';
-                        separator.style.borderRadius = '2px';
-                        cardsContainer.appendChild(separator);
-                    }
-                    
-                    const card = createCardFromRow(row);
-                    if (card) {
-                        cardsContainer.appendChild(card);
-                    }
+            rowDiv.appendChild(labelDiv);
+            rowDiv.appendChild(valueDiv);
+            return rowDiv;
+        }
+        
+        // Extract data from table cells
+        const rank = cells[0].textContent.trim();
+        const title = cells[1].textContent.trim();
+        const episodes = cells[2].textContent.trim();
+        let evaluation = cells[3].textContent.trim();
+        const romance = cells[4].textContent.trim();
+        const forAdults = cells[5].textContent.trim();
+        const yaoi = cells[6].textContent.trim();
+        const introOutro = cells[7].textContent.trim();
+        const voiceover = cells[8].textContent.trim();
+        const comments = cells[9].textContent.trim();
+        
+        // Determine evaluation class
+        let evalClass = '';
+        if (evaluation === 'THE BEST EVER') evalClass = 'best-ever';
+        else if (evaluation.toLowerCase().includes('top 7')) evalClass = 'top7';
+        else if (evaluation === 'NOPE') evalClass = 'nope';
+        else if (evaluation.includes('FREAKING')) evalClass = 'freaking-good';
+        
+        // Check if there's HTML in the evaluation cell (for special styling)
+        if (cells[3].innerHTML.includes('span')) {
+            evaluation = cells[3].innerHTML.trim();
+        }
+        
+        // Add all rows to the card
+        card.appendChild(createCardRow('Title', title));
+        card.appendChild(createCardRow('N.o. eps', episodes));
+        card.appendChild(createCardRow('Evaluation', evaluation, evalClass));
+        card.appendChild(createCardRow('Romance', romance));
+        card.appendChild(createCardRow('For adults', forAdults));
+        card.appendChild(createCardRow('Yaoi', yaoi));
+        card.appendChild(createCardRow('Intro/outro', introOutro));
+        card.appendChild(createCardRow('Relevant voiceover', voiceover));
+        
+        // Handle the comments - check if there's HTML in the comments cell
+        let commentsContent = comments;
+        if (cells[9].innerHTML.includes('span')) {
+            commentsContent = cells[9].innerHTML.trim();
+        }
+        card.appendChild(createCardRow('Comments', commentsContent));
+        
+        return card;
+    }
+    
+    // Function to check if a row is a separator row
+    function isSeparatorRow(row) {
+        return row.getAttribute('style') && row.getAttribute('style').includes('border-top');
+    }
+    
+    // Function to check if a row is a ranked anime (has a numerical rank)
+    function isRankedAnime(row) {
+        const rankCell = row.cells[0];
+        if (!rankCell) return false;
+        
+        // If it has a div with class 'rank' or contains a number
+        return rankCell.querySelector('.rank') !== null || 
+               /^[0-9]+$/.test(rankCell.textContent.trim());
+    }
+    
+    // Get all table rows except the header
+    const table = document.querySelector('table');
+    if (!table) return; // Exit if no table found
+    
+    const rows = Array.from(table.rows).slice(1); // Skip header row
+    const cardsContainer = document.querySelector('.cards-container');
+    if (!cardsContainer) return; // Exit if no cards container found
+    
+    // Find where the ranked anime end and the non-ranked begin (usually after the first separator)
+    let foundFirstSeparator = false;
+    
+    // Process each row
+    rows.forEach(row => {
+        // Check if this is a separator row
+        if (isSeparatorRow(row)) {
+            // Add a visual separator in the cards view
+            const separator = document.createElement('div');
+            separator.style.height = '2.5pt';
+            separator.style.backgroundColor = row.style.borderTopColor || 'silver';
+            separator.style.margin = '10px 0';
+            separator.style.width = '95%';
+            separator.style.borderRadius = '2px';
+            cardsContainer.appendChild(separator);
+        }
+        // Skip ranked anime (they already have cards)
+        if (isRankedAnime(row)) {
+            return;
+        }
+        // Create and add card for non-ranked anime
+        const card = createCardFromRow(row);
+        if (card) {
+            cardsContainer.appendChild(card);
+        }
+    });
+    
+    // Remove any hardcoded non-ranked cards that were added manually
+    // This ensures we don't have duplicates after the script runs
+    const allCards = Array.from(cardsContainer.querySelectorAll('.card'));
+    const rankedCount = rows.filter(isRankedAnime).length;
+    
+    // If there are more cards than ranked anime, remove the excess cards
+    // (which would be the hardcoded non-ranked ones)
+    if (allCards.length > rows.length) {
+        allCards.slice(rankedCount).forEach(card => {
+            const titleElement = card.querySelector('.card-row:nth-child(1) .card-value');
+            if (titleElement) {
+                const title = titleElement.textContent.trim();
+                // We check if this is a duplicated card by looking for another card with the same title
+                const duplicates = allCards.filter(c => {
+                    const t = c.querySelector('.card-row:nth-child(1) .card-value');
+                    return t && t.textContent.trim() === title;
                 });
-            }
-            
-            generateCardsForMobile();
-            
-            // Also check on resize
-            window.addEventListener('resize', function() {
-                const cardsContainer = document.querySelector('.cards-container');
-                if (cardsContainer) {
-                    cardsContainer.innerHTML = ''; // Clear existing cards
-                    generateCardsForMobile(); // Regenerate if mobile
+                if (duplicates.length > 1) {
+                    card.remove();
                 }
-            });
+            }
         });
-    </script>
+    }
+});
+function toggleTooltip() {
+    const tooltip = document.getElementById('infoTooltip');
+    if (tooltip.style.display === 'none' || tooltip.style.display === '') {
+        tooltip.style.display = 'block';
+    } else {
+        tooltip.style.display = 'none';
+    }
+}
 
-    <script type="application/ld+json">
+// Close tooltip when clicking outside
+document.addEventListener('click', function(event) {
+    const tooltip = document.getElementById('infoTooltip');
+    const mobileTooltip = document.getElementById('mobileInfoTooltip');
+    const button = document.querySelector('.info-button');
+    const mobileButton = document.querySelector('.mobile-info-button');
+    
+    if (button && !button.contains(event.target) && !tooltip.contains(event.target)) {
+        tooltip.style.display = 'none';
+    }
+    
+    if (mobileButton && !mobileButton.contains(event.target) && !mobileTooltip.contains(event.target)) {
+        mobileTooltip.style.display = 'none';
+    }
+});
+function toggleMobileTooltip() {
+    const tooltip = document.getElementById('mobileInfoTooltip');
+    if (tooltip.style.display === 'none' || tooltip.style.display === '') {
+        tooltip.style.display = 'block';
+    } else {
+        tooltip.style.display = 'none';
+    }
+}
+</script>
+</div>
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
