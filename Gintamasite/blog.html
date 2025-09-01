@@ -692,7 +692,7 @@
 
     async function updateCounterAPI(postId, reactionType, count) {
         try {
-            const response = await fetch(`https://api.countapi.xyz/hit/myanimeworld.org/${postId}-${reactionType}`, {
+            const response = await fetch(`https://api.count.ly/hit/myanimeworld.org/${postId}-${reactionType}`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' }
             });
@@ -712,7 +712,7 @@
         for (const postId of posts) {
             for (const reactionType of reactionTypes) {
                 try {
-                    const response = await fetch(`https://api.countapi.xyz/get/myanimeworld.org/${postId}-${reactionType}`);
+                    const response = await fetch(`'https://api.count.ly/get/myanimeworld.org/${postId}-${reactionType}`);
                     if (response.ok) {
                         const data = await response.json();
                         reactionCounts[postId][reactionType] = data.value || 0;
