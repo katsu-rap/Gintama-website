@@ -668,140 +668,45 @@
 </div>
 
 <script>
-    // Counter API integration
-    const reactionCounts = {
-        post1: { heart: 0, smile: 0, laugh: 0, surprise: 0, thanks: 0, awesome: 0 },
-        post2: { heart: 0, smile: 0, laugh: 0, surprise: 0, thanks: 0, awesome: 0 },
-        post3: { heart: 0, smile: 0, laugh: 0, surprise: 0, thanks: 0, awesome: 0 }
-    };
-    const userReactions = {};
-    const reactionTypes = ['heart', 'smile', 'laugh', 'surprise', 'thanks', 'awesome'];
-    const posts = ['post1', 'post2', 'post3'];
+const reactionTypes = ['heart', 'smile', 'laugh', 'surprise', 'thanks', 'awesome'];
+const posts = ['post1', 'post2', 'post3'];
 
-    function react(postId, reactionType) {
-        const button = document.querySelector(`[data-post="${postId}"][data-reaction="${reactionType}"]`);
-        const countElement = document.getElementById(`${postId}-${reactionType}`);
-        
-        if (userReactions[postId] === reactionType) {
-            // Remove reaction
-            userReactions[postId] = null;
-            button.classList.remove('active');
-            reactionCounts[postId][reactionType]--;
-        } else {
-            // Add new reaction (remove previous if exists)
-            if (userReactions[postId]) {
-                const prevButton = document.querySelector(`[data-post="${postId}"][data-reaction="${userReactions[postId]}"]`);
-                const prevCountElement = document.getElementById(`${postId}-${userReactions[postId]}`);
-                prevButton.classList.remove('active');
-                reactionCounts[postId][userReactions[postId]]--;
-                prevCountElement.textContent = reactionCounts[postId][userReactions[postId]];
-            }
-            userReactions[postId] = reactionType;
-            button.classList.add('active');
-            reactionCounts[postId][reactionType]++;
+async function react(postId, reactionType) {
+    const button = document.querySelector(`[data-post="${postId}"][data-reaction="${reactionType}"]`);
+    const countElement = document.getElementById(`${postId}-${reactionType}`);
+    button.classList.add('active');
+
+    try {
+        const response = await fetch('/api/reactions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ postId, reactionType })
+        });
+        if (response.ok) {
+            const data = await response.json();
+            countElement.textContent = data[postId][reactionType];
         }
-        
-        countElement.textContent = reactionCounts[postId][reactionType];
-        updateCounterAPI(postId, reactionType, reactionCounts[postId][reactionType]);
+    } catch (error) {
+        console.error('Error updating reaction count:', error);
     }
+}
 
-    async function updateCounterAPI(postId, reactionType, count) {
-        try {
-            const response = await fetch(`https://api.count.ly/hit/myanimeworld.org/${postId}-${reactionType}`, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' }
-            });
-            
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Counter API updated:', data);
-            } else {
-                console.error('Failed to update counter API');
-            }
-        } catch (error) {
-            console.error('Error updating counter API:', error);
-        }
-    }
-
-    async function loadInitialCounts() {
-        for (const postId of posts) {
-            for (const reactionType of reactionTypes) {
-                try {
-                    const response = await fetch(`'https://api.count.ly/get/myanimeworld.org/${postId}-${reactionType}`);
-                    if (response.ok) {
-                        const data = await response.json();
-                        reactionCounts[postId][reactionType] = data.value || 0;
-                        const countElement = document.getElementById(`${postId}-${reactionType}`);
-                        if (countElement) {
-                            countElement.textContent = reactionCounts[postId][reactionType];
-                        }
-                    }
-                } catch (error) {
-                    console.error('Error loading count for', postId, reactionType, ':', error);
+async function loadInitialCounts() {
+    try {
+        const response = await fetch('/api/reactions');
+        if (response.ok) {
+            const data = await response.json();
+            for (const postId of posts) {
+                for (const reactionType of reactionTypes) {
+                    const el = document.getElementById(`${postId}-${reactionType}`);
+                    if (el) el.textContent = data[postId][reactionType];
                 }
             }
         }
+    } catch (error) {
+        console.error('Error loading reaction counts:', error);
     }
-
-    function toggleShareMenu(postId) {
-        document.querySelectorAll('.share-menu').forEach(menu => menu.classList.remove('show'));
-        const menu = document.getElementById(`share-menu-${postId}`);
-        menu.classList.toggle('show');
-    }
-
-    function shareToSocial(postId, platform) {
-        const url = window.location.href;
-        let shareUrl = '';
-        
-        switch(platform) {
-            case 'whatsapp':
-                shareUrl = `https://wa.me/?text=${encodeURIComponent(url)}`;
-                break;
-            case 'instagram':
-                navigator.clipboard.writeText(url).then(() => {
-                    alert('Link copied! You can now paste it in Instagram.');
-                });
-                return;
-            case 'twitter':
-                shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`;
-                break;
-            case 'facebook':
-                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-                break;
-            case 'messenger':
-                shareUrl = `https://www.facebook.com/dialog/send?link=${encodeURIComponent(url)}&app_id=YOUR_FB_APP_ID&redirect_uri=${encodeURIComponent(window.location.href)}`;
-                break;
-        }
-        
-        if (shareUrl) {
-            window.open(shareUrl, '_blank', 'width=600,height=400');
-        }
-        
-        document.getElementById(`share-menu-${postId}`).classList.remove('show');
-    }
-
-    function openModal(modalId) {
-        document.getElementById(modalId).style.display = "block";
-    }
-
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-    }
-
-    // Event listeners
-    document.addEventListener('DOMContentLoaded', loadInitialCounts);
-
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.share-container')) {
-            document.querySelectorAll('.share-menu').forEach(menu => menu.classList.remove('show'));
-        }
-    });
-
-    window.onclick = function(event) {
-        if (event.target.classList.contains('modal')) {
-            event.target.style.display = "none";
-        }
-    }
+}
 </script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 {
+  "type": "module",
   "dependencies": {
-    "counterapi": "^2.1.2"
+    "@netlify/blobs": "^8.1.0"
   }
 }
