@@ -430,21 +430,21 @@
     <!-- Buttons leading to new tab pages and static butterflies -->
     <div class="button-container">
         <div style="position: relative;">
-            <a href="animelist table.html" target="_blank" class="nav-button" style="text-decoration: none;">Anime list</a>
+            <a href="animelist table.html" target="_blank" class="nav-button" style="text-decoration: none;" onclick="fetch('/api/track', {method:'POST', body: JSON.stringify({type:'click', button:'anime_list'})})">Anime list</a>
             <div class="butterfly-bg medium static-butterfly" style="position: absolute; top: 35px; right: -45px; transform: translateY(-50%);">
                 <img src="butterflyright.png" alt="Background butterfly" />
             </div>
         </div>
         
         <div style="position: relative;">
-            <a href="metalsongs.html" target="_blank" class="nav-button" style="text-decoration: none;">Metal anime songs</a>
+            <a href="metalsongs.html" target="_blank" class="nav-button" style="text-decoration: none;" onclick="fetch('/api/track', {method:'POST', body: JSON.stringify({type:'click', button:'metal_songs'})})">Metal anime songs</a>
             <div class="butterfly-bg medium static-butterfly" style="position: absolute; top: 35px; right: -45px; transform: translateY(-50%);">
                 <img src="butterflyright.png" alt="Background butterfly" />
             </div>
         </div>
         
         <div style="position: relative;">
-            <a href="blog.html" target="_blank" class="nav-button" style="text-decoration: none;">Blog</a>
+            <a href="blog.html" target="_blank" class="nav-button" style="text-decoration: none;" onclick="fetch('/api/track', {method:'POST', body: JSON.stringify({type:'click', button:'blog'})})">Blog</a>
             <div class="butterfly-bg medium static-butterfly" style="position: absolute; top: 35px; right: -45px; transform: translateY(-50%);">
                 <img src="butterflyright.png" alt="Background butterfly" />
             </div>
@@ -648,5 +648,8 @@
             <p>This is a fan website created for non-commercial purposes. Created by d'ORCA</p>
         </div>
     </footer>
+    <script>
+        fetch('/api/track', {method:'POST', body: JSON.stringify({page: location.pathname, ref: document.referrer})});
+        </script>
 </body>
 </html>
